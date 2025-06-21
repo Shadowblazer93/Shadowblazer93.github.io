@@ -143,14 +143,12 @@ a.header-link {
     padding: 10px 0px;
     gap: 7px;
     margin-bottom: 5px;
-    margin-right: 7px;
+    margin-right: 0px;
     border-radius: 20px;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
-    outline: rgba(86, 86, 86, 0.354) 2px solid;
-    outline-style: groove;
-    outline-offset: -2px;
+    outline: #36373d 3px solid;
     box-shadow: 0 2px 8px rgba(36,41,47,0.08);
     transition: background 0.2s, box-shadow 0.2s;
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
