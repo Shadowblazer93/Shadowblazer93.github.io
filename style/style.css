@@ -25,6 +25,15 @@ header {
     margin-top: -10px; */
 }
 
+.header-title {
+    @media (max-width: 450px) {
+        display:none;
+    }
+    @media (min-width: 450px) {
+        display:initial;
+    }
+}
+
 h1 {
     color: #e5e6ed;
     font-size: 1.6em;
@@ -105,18 +114,20 @@ a.header-shortcut:hover {
 }
 
 .header-links {
-    @media (min-width: 1000px) {
+    @media (min-width: 1150px) {
         display: inline-block;
         padding-left: calc(72% - 600px);
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1150px) {
         display: flex;
         flex-direction: row;
         justify-content: start;
         padding-top: 10px;
         padding-left: 20px;
         align-items: center;
+        font-size: small;
+        font-weight: 900;
         gap: 10px;   
     }
 }
