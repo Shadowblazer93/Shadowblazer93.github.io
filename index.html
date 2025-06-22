@@ -86,20 +86,6 @@
           </header>
         </div>
       </div>
-      <style>
-        #floating-header {
-          transform: translateY(-100%) scale(0.95);
-          opacity: 0;
-          transition: 
-        transform 0.35s cubic-bezier(.4,0,.2,1),
-        opacity 0.25s cubic-bezier(.4,0,.2,1);
-          display: flex !important;
-        }
-        #floating-header.visible {
-          transform: translateY(0) scale(1);
-          opacity: 1;
-        }
-      </style>
       <script>
         const floatingHeader = document.getElementById('floating-header');
         const mainHeader = document.querySelector('header');
@@ -171,25 +157,8 @@
 
       <h2 style="margin-left:20px; display: inline;">About </h2>
       <h2 class="breathing-gradient">Me</h2>
-      <style>
-        .breathing-gradient {
-        background: linear-gradient(90deg, #008cff, #58f95d, #008cff);
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-        animation: breathing-colors 3s ease-in-out infinite;
-        display: inline;
-        }
-        @keyframes breathing-colors {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-        }
-      </style>
 
-      <p>Year 2 Student in NTU, Singapore<br>Computer Science : Honours (Highest Distinction)</p>
+      <p>Year 2 Student at NTU, Singapore<br>Computer Science : Honours (Highest Distinction)</p>
 
       <a id="projects"></a>
       <br style="margin-top: 20px;">
@@ -215,9 +184,10 @@
       <h2 style="text-align: center;">Projects</h2>
 
       <div class="project-grid">
+        <!-- /Project1 -->
         <div class="project-card">
           <h1 style="padding-top: 30px">Lilian : Discord Bot</h1>
-          <p style="font-size: large;">A moderation and utility bot for Discord.<br>Built using Node.js and deployed on the cloud.</p>
+          <p style="font-size: large;">A moderation and utility bot for Discord.<br>Built using <span style="color: #74cd89; font-weight: bold;">Node.js</span> and deployed 24/7 on the cloud.</p>
           <p style="font-size:large;">
             Verified by Discord
             <img src="assets/discord_verified_check.png" style="height: 20px; vertical-align: middle; padding-left: 5px;">
@@ -225,7 +195,7 @@
           </p>
 
           <img class="project-image" src="assets/lilian_project_showcase.png">
-
+          
           <br>
           <br>
 
@@ -240,20 +210,21 @@
           </a>
         </div>
 
+        <!-- /Project2 -->
         <div class="project-card">
-          <h1 style="padding-top: 20px;">Project 2</h1>
+          <h1 style="padding-top: 30px;">Project 2</h1>
           <p style="font-size: large;">Description 2</p>
         </div>
       </div>
 
       <div class="project-grid">
         <div class="project-card">
-          <h1 style="padding-top: 20px;">Project 3</h1>
+          <h1 style="padding-top: 30px;">Project 3</h1>
           <p style="font-size: large;">Description 3</p>
         </div>
 
         <div class="project-card">
-          <h1 style="padding-top: 20px;">Project 4</h1>
+          <h1 style="padding-top: 30px;">Project 4</h1>
           <p style="font-size: large;">Description 4</p>
         </div>
         
@@ -275,6 +246,20 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       </script>
+
+      <a id="contact"></a>
+      <section class="contact-section" style="margin: 60px 0 40px 0; padding: 30px 50px; background: #23242a; border-radius: 18px; max-width: auto; margin-left: auto; margin-right: auto;">
+        <h2 style="text-align:center; margin-bottom: 30px;">Contact Me</h2>
+        <form action="https://formspree.io/f/movwkqvq" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+          <input type="text" name="name" placeholder="Your Name" class="contact-input" required>
+          <input type="email" name="email" placeholder="Your Email" class="contact-input" required>
+          <textarea name="message" placeholder="Your Message" rows="5" class="contact-input" required style="resize: vertical; min-height: 30px;"></textarea>
+            <button type="submit" class="contact-send">Send</button>
+        </form>
+        <p style="text-align:center; margin-top: 18px; color: #aaa; font-size: 0.95em;">
+          Or email me directly at <a href="mailto:azam93khalid@gmail.com" style="color:#74cd89;">azam93khalid@gmail.com</a>
+        </p>
+      </section>
 
       <footer>
         <p class="footer-text">&copy; 2025 Azam Khalid. All rights reserved.</p>
