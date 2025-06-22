@@ -256,7 +256,7 @@ a.header-link:hover {
     box-shadow: 0 4px 16px rgba(36,41,47,0.12);
 }
 
-.contact-input {
+/* .contact-input {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #444;
@@ -264,7 +264,7 @@ a.header-link:hover {
     color: #eee;
     font-size:larger;
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-}
+} */
 
 .contact-send {
     padding: 12px;
