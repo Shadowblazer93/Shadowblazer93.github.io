@@ -97,6 +97,24 @@ p {
     line-height: 1.6;
 }
 
+p.about-subheading {
+    color: #d3d4db;
+    font-size: 1.6em;
+    margin-bottom:0;
+}
+
+.credential {
+    color: #6fa5e7;
+    font-size: 0.85em;
+    text-decoration: none;
+}
+
+.credential:hover {
+    color: #6ee1a4;
+    text-decoration: underline;
+    transition: color 0.8s;
+}
+
 .footer-text {
     color: #bec5d1;
     font-size: 1.1em;
