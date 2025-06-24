@@ -103,6 +103,38 @@ p.about-subheading {
     margin-bottom:0;
 }
 
+.about-card {
+    @media (max-width: 1100px) {
+        display:none;
+        }
+
+    background-color: #202126;
+    border-radius: 35px;
+    box-shadow: 0 2px 8px rgba(36,41,47,0.08);
+    margin-left: 150px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    width: 450px;
+    height:365px;
+    position: absolute;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.about-card:hover {
+    background-color: #26272c;
+    /* transform: translateY(-5px); */
+    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+}
+
+p.about-list {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @media (max-width: 610px) {
+        font-size: small;
+    }
+}
+
 .credential {
     color: #6fa5e7;
     font-size: 0.85em;
