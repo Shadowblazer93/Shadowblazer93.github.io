@@ -242,9 +242,24 @@ a.header-link:hover {
 }
 
 .project-grid {
+    @media (max-width: 700px) {
+        grid-template-columns: 1fr !important;
+    }
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
+}
+
+.project-grid-vertical {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0;
+}
+
+.project-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .project-card {
@@ -255,6 +270,8 @@ a.header-link:hover {
     box-shadow: 0 2px 8px rgba(36,41,47,0.08);
     margin-bottom: 20px;
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    overflow-wrap: break-word;
+    word-break: break-word;
     /* width: 100%;
     min-width: 340px;
     max-width: 700px;
@@ -274,8 +291,8 @@ a.header-link:hover {
 }
 
 .project-image {
-    margin-left:20px;
-    border-radius:25px;
+    margin-left:15px;
+    border-radius:15px;
 
     @media (min-width: 1000px) {
         display: inline-block;
