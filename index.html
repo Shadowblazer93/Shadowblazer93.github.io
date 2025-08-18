@@ -54,43 +54,24 @@
       <!-- Floating Header -->
       <div id="floating-header" style="position:fixed;top:0;left:0;width:100%;background:#202126;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:999;display:flex;align-items:center;justify-content:center;transition:none;padding:0; transition: cubic-bezier(0.55, 0.085, 0.68, 0.53); transition-duration: 100ms; border-bottom: #26272c   5px solid;">
         <div class="container" style="width:100%;">
-          <header style="margin:0; border-bottom: none;">
-        <a href="#about-me" style="text-decoration: none; color: inherit;">
-          <h1 class="header-title">
-            <img src="assets/favicon.png" style="height:40px; width: 40px; vertical-align: middle; padding-right: 3px;border-radius: 15px; padding-bottom: 5px;">
-            Azam Khalid
-          </h1>
-        </a>
-
-        <div class="header-shortcuts">
-          <a class="header-shortcut" href="#about-me">About</a>
-          <a class="header-shortcut" href="#projects">Projects</a>
-          <a class="header-shortcut" href="#contact">Contact</a>
-        </div>
-
-        <div class="header-links">
-          <a class="header-link" href="https://github.com/Shadowblazer93" target="_blank" style="background-color: #0e1012; margin-right: 7px;">
-            <img src="assets/github-mark-white.png" style="height: 25px;">
-            Github
-          </a>
-
-          <a class="header-link" href="https://www.linkedin.com/in/sb930/" target="_blank" style="background-color: #0a66c2; margin-right: 7px">
-            <img src="assets/InBug-White.png" style="height: 25px;">
-            LinkedIn
-          </a>
-
-          <a class="header-link" href="AzamKhalid_Resume.pdf" target="_blank" style="background-color: #169b5f; margin-right: 0px">
-            <img src="assets/resume.png" style="height: 25px;">
-            Resume
-          </a>
-        </div>
-          </header>
+            <header id="floating-header-inner" style="margin:0; border-bottom: none;"></header>
+            <script>
+              function updateFloatingHeader() {
+                const originalHeader = document.querySelector('header');
+                const floatingHeaderInner = document.getElementById('floating-header-inner');
+                if (originalHeader && floatingHeaderInner) {
+                  floatingHeaderInner.innerHTML = originalHeader.innerHTML;
+                  const headerHeight = originalHeader.offsetHeight;
+                  floatingHeaderInner.style.height = (headerHeight - 20) + 'px';
+                }
+              }
+              window.addEventListener('DOMContentLoaded', updateFloatingHeader);
+              window.addEventListener('resize', updateFloatingHeader);
+            </script>
         </div>
       </div>
       <script>
         const floatingHeader = document.getElementById('floating-header');
-        const mainHeader = document.querySelector('header');
-        let headerBottom = mainHeader.offsetTop + mainHeader.offsetHeight;
         let isVisible = false;
 
         function showFloatingHeader() {
@@ -107,30 +88,23 @@
         }
 
         window.addEventListener('scroll', () => {
-          if (window.scrollY > headerBottom) {
+          if (window.scrollY > 30) {
         showFloatingHeader();
           } else {
         hideFloatingHeader();
           }
         });
 
-        // Ensure header is hidden initially
         hideFloatingHeader();
 
-        // Recalculate headerBottom on resize
-        window.addEventListener('resize', () => {
-          headerBottom = mainHeader.offsetTop + mainHeader.offsetHeight;
-        });
-
-        // Smooth scroll for floating header links
         floatingHeader.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href && href.startsWith('#')) {
           const target = document.querySelector(href);
           if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
           }
         }
           });
@@ -212,7 +186,7 @@
             e.preventDefault();
             const rect = target.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const offset = rect.top + scrollTop - 70; // 70px above the tag
+            const offset = rect.top + scrollTop - 70;
             window.scrollTo({ top: offset, behavior: 'smooth' });
           }
         }

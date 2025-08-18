@@ -20,6 +20,8 @@ header {
     padding-bottom: 5px;
     top: 0px;
     left: 0px;
+    position: sticky;
+    z-index: 1000;
     /* width: 100vw; */
     /* margin-left: calc(50% - 50vw);
     margin-top: -10px; */
@@ -35,11 +37,8 @@ header {
 }
 
 #floating-header {
-    transform: translateY(-100%) scale(0.95);
     opacity: 0;
-    transition: 
-    transform 0.35s cubic-bezier(.4,0,.2,1),
-    opacity 0.25s cubic-bezier(.4,0,.2,1);
+    transition: opacity 0.5s ease;
     display: flex !important;
 }
 
