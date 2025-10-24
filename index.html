@@ -29,6 +29,7 @@
 
         <div class="header-shortcuts">
           <a class="header-shortcut" href="#about-me">About</a>
+          <a class="header-shortcut" href="#experience">Experience</a>
           <a class="header-shortcut" href="#projects">Projects</a>
           <a class="header-shortcut" href="#contact">Contact</a>
         </div>
@@ -44,7 +45,7 @@
             LinkedIn
           </a>
 
-          <a class="header-link" href="AzamKhalid_Resume.pdf" target="_blank" style="background-color: #169b5f; margin-right: 0px">
+          <a class="header-link" href="https://Shadowblazer93.github.io/assets/AK_s_Resume.pdf" target="_blank" style="background-color: #229b65; margin-right: 0px">
             <img src="assets/resume.png" style="height: 25px;">
             Resume
           </a>
@@ -111,7 +112,7 @@
         });
       </script>
 
-      <h4 style="margin-top:70px;"></h4>
+      <h4 style="margin-top:50px;"></h4>
 
       <a id="about-me"></a>
       <script>
@@ -171,6 +172,62 @@
             </a>
           </div>
         </div>
+      </div>
+
+      <br style="display:block; margin: 10px 0">
+
+      <a id="experience"></a>
+      <br style="margin-top: 20px;">
+
+      <script>
+        document.querySelectorAll('a.header-shortcut').forEach(link => {
+          link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const rect = target.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const offset = rect.top + scrollTop - 70;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+          }
+        }
+          });
+        });
+      </script>
+
+      <div class="full-bleed" style="background: #1d1e22;">
+        <h2 style="text-align: center;">Experience</h2>
+
+        <div class="experience-grid">
+          <div class="experience-card">
+            <div class="exp-title-row">
+              <h1 style="padding-top: 5px; color: #23242a; display: grid; align-items: center;"> Undergraduate Research Assistant </h1>
+              <img src="assets/ntu_logo.png" alt="NTU Logo" class="exp-logo" style="height:64px; margin-left:auto;">
+            </div>
+            <p style="font-size: larger; color: #32393a;font-weight: 700; margin-top:-15px;">Nanyang Technological University, Singapore</p>
+            <p style="color: #41434f; font-size: large; margin-top:-15px;">Sept 2025 - Current | Singapore</p>
+            <p style="font-size: large; color: #23242a;">
+              • Developed features for <b>SIERRA</b>, a visual query interface for property graphs using <span style="color: #ee3f3f; font-weight: bold;">React, Neo4j, Cypher and Docker</span>.<br>
+              • Built React front-end components for new features with emphasis on interactive and intuitive data visualization.<br>
+              • Implemented Cypher query builders in Neo4j to support advanced graph operations and integrated them with backend services.<br>
+              • Collaborated with faculty to define requirements and translate them into technical features enhancing graph data exploration.<br>
+            </p>
+
+            <a class="project-link-dark" href="https://github.com/Shadowblazer93/SIERRA" target="_blank" style="margin-left:20px;">
+            <img src="assets/github-mark-white.png" style="height: 20px; vertical-align: middle; padding-right: 3px; padding-bottom: 5px;">
+            <span style="color:#d0d4db;">Github</span> <i class="fa fa-external-link" style="font-size: medium; color:#d0d4db;"></i>
+            </a>
+
+            <a class="project-link-dark" href="https://shadowblazer93.github.io/SIERRA" target="_blank"">
+            <img src="assets/website.png" style="height: 20px; vertical-align: middle; padding-right: 3px; padding-bottom: 5px;">
+            <span style="color:#d0d4db;">Website</span> <i class="fa fa-external-link" style="font-size: medium; color:#d0d4db;"></i>
+            </a>
+          </div>
+        </div>
+
+        <br style="display:block; margin: 30px 0">
       </div>
 
       <a id="projects"></a>

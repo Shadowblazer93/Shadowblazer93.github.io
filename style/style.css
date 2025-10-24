@@ -9,6 +9,14 @@ html {
         padding-left: 20px;
         padding-right: 20px;
     }
+    overflow: visible;
+}
+
+.full-bleed {
+  box-shadow: 0 0 0 100vmax #1d1e22;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  clip-path: inset(0 -100vmax);
 }
 
 header {
@@ -178,7 +186,7 @@ a.header-shortcut {
     text-decoration: none;
     align-items: center;
     color: #bec0d7;
-    padding: 10px 10px;
+    padding: 10px 5px;
     border-radius: 10px;
     font-size: 1.1em;
     font-weight: 500;
@@ -195,7 +203,7 @@ a.header-shortcut:hover {
 .header-links {
     @media (min-width: 1150px) {
         display: inline-block;
-        padding-left: calc(72% - 600px);
+        padding-left: calc(72% - 700px);
     }
 
     @media (max-width: 1150px) {
@@ -238,6 +246,47 @@ a.header-link:hover {
     box-shadow: 0 4px 16px rgba(36,41,47,0.12);
     color: #8aadf4;
     transform: translateY(-5px);
+}
+
+.experience-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.experience-card {
+    background-color: #e5c890;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(36,41,47,0.08);
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    color: #e5e6ed;
+    box-shadow:0 2px 8px rgba(0,0,0,0.10);
+    position: relative;
+}
+
+.experience-card:hover {
+    background-color: #85c1dc;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+}
+
+.exp-title-row {
+  display: flex;
+  align-items: center;
+}
+
+.exp-title-row .exp-logo {
+  height: 64px;
+  margin-right:10px;
+  padding: 0;
+  display: inline-block;
+  transform: translateY(15px);
+  vertical-align: auto;
+  box-shadow: none;
+  background: none;
 }
 
 .project-grid {
@@ -317,8 +366,26 @@ a.header-link:hover {
     transition: background 0.3s, box-shadow 0.2s;
 }
 
+.project-link-dark {
+    text-decoration: none;
+    color: #393939;
+    margin-left:10px;
+    font-weight: 700;
+    font-size: 1.1em;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    border-radius: 10px;
+    background-color: #23242a;
+    padding: 5px 5px;
+    transition: background 0.3s, box-shadow 0.2s;
+}
+
 .project-link:hover {
     background-color: #c9d5e6;
+    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+}
+
+.project-link-dark:hover {
+    background-color: #4c4f69;
     box-shadow: 0 4px 16px rgba(36,41,47,0.12);
 }
 
