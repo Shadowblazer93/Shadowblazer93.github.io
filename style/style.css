@@ -13,10 +13,10 @@ html {
 }
 
 .full-bleed {
-  box-shadow: 0 0 0 100vmax #1d1e22;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  clip-path: inset(0 -100vmax);
+    box-shadow: 0 0 0 100vmax #1d1e22;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    clip-path: inset(0 -100vmax);
 }
 
 header {
@@ -37,10 +37,10 @@ header {
 
 .header-title {
     @media (max-width: 450px) {
-        display:none;
+        display: none;
     }
     @media (min-width: 450px) {
-        display:initial;
+        display: initial;
     }
 }
 
@@ -63,7 +63,7 @@ h1 {
     display: inline;
     font-weight: 700;
     vertical-align: middle;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -73,26 +73,32 @@ h1:hover {
 }
 
 .breathing-gradient {
-background: linear-gradient(90deg, #008cff, #58f95d, #008cff);
-background-size: 300% 300%;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-color: transparent;
-animation: breathing-colors 3s ease-in-out infinite;
-display: inline;
+    background: linear-gradient(90deg, #008cff, #58f95d, #008cff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: breathing-colors 3s ease-in-out infinite;
+    display: inline;
 }
 @keyframes breathing-colors {
-        0% {background-position: 0% 50%;}
-        50% {background-position: 100% 50%;}
-        100% {background-position: 0% 50%;}
-        }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 h2 {
     color: #e5e6ed;
     font-size: 3em;
     font-weight: 600;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
 p {
@@ -100,28 +106,31 @@ p {
     font-size: 1.4em;
     margin: 20px;
     font-weight: 500;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
     line-height: 1.6;
 }
 
 p.about-subheading {
     color: #d3d4db;
     font-size: 1.6em;
-    margin-bottom:0;
+    margin-bottom: 0;
 }
 
 .about-card {
     @media (max-width: 1100px) {
-        display:none;
-        }
+        display: none;
+    }
 
     background-color: #202126;
     border-radius: 35px;
-    box-shadow: 0 2px 8px rgba(36,41,47,0.08);
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
     margin-left: 150px;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
     width: 450px;
-    height:365px;
+    height: 365px;
     position: absolute;
     left: 60%;
     transform: translate(-50%, -50%);
@@ -130,7 +139,7 @@ p.about-subheading {
 .about-card:hover {
     background-color: #26272c;
     /* transform: translateY(-5px); */
-    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 
 p.about-list {
@@ -157,7 +166,7 @@ p.about-list {
 .footer-text {
     color: #bec5d1;
     font-size: 1.1em;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     text-align: center;
     margin: 10px 0;
     letter-spacing: 0.5px;
@@ -174,9 +183,8 @@ p.about-list {
         justify-content: start;
         padding-left: 20px;
         align-items: center;
-        gap: 10px;   
+        gap: 10px;
     }
-    
 }
 
 a.header-shortcut {
@@ -190,14 +198,16 @@ a.header-shortcut {
     border-radius: 10px;
     font-size: 1.1em;
     font-weight: 500;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
 a.header-shortcut:hover {
     background-color: #3b3d44;
-    box-shadow: 0 2px 8px rgba(38,39,44,0.08);
+    box-shadow: 0 2px 8px rgba(38, 39, 44, 0.08);
     /* color: #8aadf4; */
-    transition: background 0.2s, box-shadow 0.2s;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s;
 }
 
 .header-links {
@@ -215,7 +225,7 @@ a.header-shortcut:hover {
         align-items: center;
         font-size: small;
         font-weight: 900;
-        gap: 10px;   
+        gap: 10px;
     }
 }
 
@@ -236,14 +246,18 @@ a.header-link {
     font-size: 1.1em;
     font-weight: 500;
     outline: #36373d 3px solid;
-    box-shadow: 0 2px 8px rgba(36,41,47,0.08);
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        color 0.2s,
+        transform 0.2s;
 }
 
 a.header-link:hover {
     background-color: #3b3d44;
-    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
     color: #8aadf4;
     transform: translateY(-5px);
 }
@@ -257,36 +271,61 @@ a.header-link:hover {
 .experience-card {
     background-color: #e5c890;
     border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(36,41,47,0.08);
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
     padding-bottom: 20px;
     margin-bottom: 10px;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
     color: #e5e6ed;
-    box-shadow:0 2px 8px rgba(0,0,0,0.10);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
 .experience-card:hover {
     background-color: #85c1dc;
     transform: translateY(-3px);
-    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+}
+
+.cca-card {
+    background-color: #ade39f;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: #e5e6ed;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.cca-card:hover {
+    background-color: #85c1dc;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 
 .exp-title-row {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .exp-title-row .exp-logo {
-  height: 64px;
-  margin-right:10px;
-  padding: 0;
-  display: inline-block;
-  transform: translateY(15px);
-  vertical-align: auto;
-  box-shadow: none;
-  background: none;
+    height: 64px;
+    margin-right: 10px;
+    padding: 0;
+    display: inline-block;
+    transform: translateY(15px);
+    vertical-align: auto;
+    box-shadow: none;
+    background: none;
 }
 
 .project-grid {
@@ -305,19 +344,22 @@ a.header-link:hover {
 }
 
 .project-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .project-card {
     background-color: #202126;
     border-radius: 15px;
-    /* padding: 10px; */
-    padding-bottom:20px;
-    box-shadow: 0 2px 8px rgba(36,41,47,0.08);
+    padding: 10px;
+    padding-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
     margin-bottom: 20px;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
     overflow-wrap: break-word;
     word-break: break-word;
     /* width: 100%;
@@ -335,12 +377,12 @@ a.header-link:hover {
 .project-card:hover {
     background-color: #26272c;
     transform: translateY(-5px);
-    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 
 .project-image {
-    margin-left:15px;
-    border-radius:15px;
+    margin-left: 15px;
+    border-radius: 15px;
 
     @media (min-width: 1000px) {
         display: inline-block;
@@ -356,37 +398,41 @@ a.header-link:hover {
 .project-link {
     text-decoration: none;
     color: #393939;
-    margin-left:10px;
+    margin-left: 10px;
     font-weight: 700;
     font-size: 1.1em;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
     border-radius: 10px;
     background-color: #8aadf4;
     padding: 5px 5px;
-    transition: background 0.3s, box-shadow 0.2s;
+    transition:
+        background 0.3s,
+        box-shadow 0.2s;
 }
 
 .project-link-dark {
     text-decoration: none;
     color: #393939;
-    margin-left:10px;
+    margin-left: 10px;
     font-weight: 700;
     font-size: 1.1em;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
     border-radius: 10px;
     background-color: #23242a;
     padding: 5px 5px;
-    transition: background 0.3s, box-shadow 0.2s;
+    transition:
+        background 0.3s,
+        box-shadow 0.2s;
 }
 
 .project-link:hover {
     background-color: #c9d5e6;
-    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 
 .project-link-dark:hover {
     background-color: #4c4f69;
-    box-shadow: 0 4px 16px rgba(36,41,47,0.12);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 
 /* .contact-input {
@@ -411,7 +457,7 @@ a.header-link:hover {
     width: 100%;
     max-width: 350px;
     align-self: center;
-    margin-top:30px;
+    margin-top: 30px;
 }
 
 footer {
@@ -423,12 +469,12 @@ footer {
     width: 100%;
     bottom: 0;
     left: 0px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
 }
 
 .inter-defaultfont {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
 }
