@@ -1,27 +1,44 @@
 /* Design tokens: colour, type and surface values for every theme.
-   Every colour is an alias of the Catppuccin palette (@catppuccin/palette):
-   dark mode is Macchiato, light mode is Latte. The package stylesheet
-   (imported in index.css) publishes each flavour as --ctp-<flavour>-<colour>
-   variables, which the semantic tokens below point at. */
+
+   Dark mode keeps every Catppuccin Macchiato colour (text, accents, links,
+   cards) but replaces the background greys and blacks with libadwaita's dark
+   neutrals, so the page sits on the same greys as a GNOME / Adwaita app.
+   Light mode is untouched Catppuccin Latte.
+
+   The Catppuccin package stylesheet (imported in index.css) publishes each
+   flavour as --ctp-<flavour>-<colour> variables; the semantic tokens below
+   point at those, and at the libadwaita greys declared first. */
 
 :root {
     color-scheme: dark;
 
-    /* Surfaces (Macchiato). */
-    --bg: var(--ctp-macchiato-base);
-    --bg-section: var(--ctp-macchiato-mantle);
-    --surface: var(--ctp-macchiato-surface0);
-    --surface-hover: var(--ctp-macchiato-surface1);
-    --surface-alt: var(--ctp-macchiato-mantle);
-    --surface-tint: var(--ctp-macchiato-surface0);
-    --border: var(--ctp-macchiato-surface1);
-    --nav-hover: var(--ctp-macchiato-surface1);
-    --divider: var(--ctp-macchiato-surface2);
+    /* libadwaita (GNOME) dark neutrals: the window / view / sidebar / card
+       greys. Values are libadwaita's dark palette; card and hover are its
+       translucent overlays composited on top of window_bg_color. */
+    --adw-view-bg: #1d1d20; /* view_bg_color */
+    --adw-window-bg: #222226; /* window_bg_color */
+    --adw-overview-bg: #28282c; /* overview_bg_color */
+    --adw-sidebar-bg: #2e2e32; /* sidebar / headerbar_bg_color */
+    --adw-card-bg: #343438; /* card_bg_color over window_bg_color */
+    --adw-hover-bg: #3d3d41; /* hover overlay over card_bg_color */
+    --adw-border: #434347; /* border_color over window_bg_color */
+    --adw-toast-bg: #505053; /* toast_bg_color */
 
-    --toggle-bg: var(--ctp-macchiato-surface0);
-    --toggle-border: var(--ctp-macchiato-surface1);
+    /* Surfaces (libadwaita dark). */
+    --bg: var(--adw-window-bg);
+    --bg-section: var(--adw-view-bg);
+    --surface: var(--adw-card-bg);
+    --surface-hover: var(--adw-hover-bg);
+    --surface-alt: var(--adw-overview-bg);
+    --surface-tint: var(--adw-sidebar-bg);
+    --border: var(--adw-border);
+    --nav-hover: var(--adw-hover-bg);
+    --divider: var(--adw-toast-bg);
+
+    --toggle-bg: var(--adw-card-bg);
+    --toggle-border: var(--adw-hover-bg);
     --toggle-text: #e5e6ed;
-    --ring: var(--ctp-macchiato-surface2);
+    --ring: var(--adw-border);
 
     /* Text colours are intentionally left as-is. */
     --text-strong: #e5e6ed;
@@ -46,7 +63,7 @@
     --accent-red: var(--ctp-latte-red);
     --link: var(--ctp-macchiato-blue);
     --link-hover: var(--ctp-macchiato-green);
-    --btn-neutral: var(--ctp-macchiato-surface2);
+    --btn-neutral: var(--adw-toast-bg);
     --btn-neutral-text: #d8d8d8;
 }
 
