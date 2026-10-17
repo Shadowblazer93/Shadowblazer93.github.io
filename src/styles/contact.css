@@ -1,0 +1,83 @@
+/* Contact section, the Formspree form and the back-to-top button. */
+
+.contact-section {
+    margin: 60px auto 40px;
+    padding: 30px 50px;
+    background: var(--surface-alt);
+    border-radius: 18px;
+}
+
+.contact-heading {
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    background: var(--surface-tint);
+    color: var(--input-text);
+    font-size: larger;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+textarea.contact-input {
+    resize: vertical;
+    min-height: 30px;
+}
+
+.contact-send {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #169b5f;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    max-width: 350px;
+    align-self: center;
+    margin-top: 30px;
+}
+
+.contact-direct {
+    text-align: center;
+    margin-top: 18px;
+    color: var(--text-muted);
+    font-size: 0.95em;
+}
+
+.contact-direct a {
+    color: var(--accent-green);
+}
+
+/* Back to top ------------------------------------------------------ */
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    z-index: 1000;
+    padding: 12px 18px;
+    border-radius: 50%;
+    border: none;
+    background: var(--btn-neutral);
+    color: var(--btn-neutral-text);
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+}
+
+.back-to-top.is-visible {
+    display: block;
+}

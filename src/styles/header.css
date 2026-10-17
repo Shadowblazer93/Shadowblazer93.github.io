@@ -1,0 +1,310 @@
+/* Site header: the sticky header, its floating clone, and the theme switcher. */
+
+header {
+    background-color: var(--surface);
+    color: var(--text-nav);
+    border-radius: 10px;
+    border-bottom: var(--border) 5px solid;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    top: 0px;
+    left: 0px;
+    position: sticky;
+    z-index: 1000;
+}
+
+.header-avatar {
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    padding-right: 3px;
+    border-radius: 15px;
+    padding-bottom: 5px;
+}
+
+.header-title {
+    @media (max-width: 450px) {
+        display: none;
+    }
+    @media (min-width: 450px) {
+        display: initial;
+    }
+}
+
+/* Floating header -------------------------------------------------- */
+
+#floating-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: var(--surface);
+    border-bottom: var(--border) 5px solid;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+    opacity: 0;
+    transition: all 100ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+#floating-header.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+#floating-header > .container {
+    width: 100%;
+}
+
+#floating-header-inner {
+    margin: 0;
+    border-bottom: none;
+}
+
+/* Navigation shortcuts --------------------------------------------- */
+
+.header-shortcuts {
+    @media (min-width: 600px) {
+        display: initial;
+    }
+
+    @media (max-width: 600px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        padding-left: 20px;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+a.header-shortcut {
+    display: inline-flex;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    color: var(--text-nav);
+    padding: 10px 5px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+a.header-shortcut:hover {
+    background-color: var(--nav-hover);
+    box-shadow: 0 2px 8px rgba(38, 39, 44, 0.08);
+    transition:
+        background 0.2s,
+        box-shadow 0.2s;
+}
+
+/* Outbound links --------------------------------------------------- */
+
+.header-links {
+    @media (min-width: 1150px) {
+        display: inline-block;
+        padding-left: calc(72% - 700px);
+    }
+
+    @media (max-width: 1150px) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: start;
+        padding-top: 10px;
+        padding-left: 20px;
+        align-items: center;
+        font-size: small;
+        font-weight: 900;
+        gap: 10px;
+    }
+}
+
+a.header-link {
+    display: inline-flex;
+    vertical-align: middle;
+    width: 130px;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+    color: white;
+    padding: 10px 0px;
+    gap: 7px;
+    margin-bottom: 5px;
+    margin-right: 0px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 1.1em;
+    outline: var(--ring) 3px solid;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        color 0.2s,
+        transform 0.2s;
+}
+
+a.header-link img {
+    height: 25px;
+}
+
+a.header-link:hover {
+    background-color: var(--nav-hover);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+    color: var(--accent);
+    transform: translateY(-5px);
+}
+
+/* Element-qualified so they outrank the `a.header-link` base rule. */
+a.header-link--github {
+    background-color: #0e1012;
+    margin-right: 7px;
+}
+
+a.header-link--linkedin {
+    background-color: #0a66c2;
+    margin-right: 7px;
+}
+
+a.header-link--resume {
+    background-color: #229b65;
+    margin-right: 0px;
+}
+
+/* Theme switcher --------------------------------------------------- */
+
+.theme-switcher {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: 0 0 5px 0;
+    padding: 0;
+    border: none;
+    border-radius: 22px;
+    outline: var(--ring) 3px solid;
+    background-color: var(--toggle-bg);
+    color: var(--toggle-text);
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    transition:
+        background 0.2s,
+        box-shadow 0.2s,
+        color 0.2s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--nav-hover);
+    color: var(--accent);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+}
+
+.theme-toggle:focus-visible {
+    outline: var(--accent) 3px solid;
+    outline-offset: 2px;
+}
+
+/* The main button only ever shows sun or moon (the resolved theme),
+   never the computer icon - that lives only inside the hover menu. */
+.theme-toggle .theme-icon-sun {
+    display: none;
+}
+
+.theme-toggle .theme-icon-moon {
+    display: inline;
+}
+
+[data-theme="light"] .theme-toggle .theme-icon-sun {
+    display: inline;
+}
+
+[data-theme="light"] .theme-toggle .theme-icon-moon {
+    display: none;
+}
+
+.theme-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 150px;
+    margin: 0;
+    padding: 6px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease,
+        visibility 0.15s ease;
+}
+
+.theme-switcher:hover .theme-menu,
+.theme-switcher:focus-within .theme-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-body);
+    font-size: 1em;
+    font-weight: 600;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    text-align: left;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+.theme-option i {
+    width: 18px;
+    font-size: 1.05em;
+    text-align: center;
+}
+
+.theme-option:hover {
+    background-color: var(--nav-hover);
+    color: var(--text-strong);
+}
+
+.theme-option.active {
+    background-color: var(--nav-hover);
+    color: var(--accent);
+}

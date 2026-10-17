@@ -1,0 +1,84 @@
+/* About section: certifications column and the stats card. */
+
+.about-columns {
+    display: flex;
+    flex-direction: row;
+}
+
+.about-left {
+    max-width: 600px;
+    flex: 1 1 300px;
+}
+
+.about-divider {
+    border: 1px solid var(--input-border);
+    margin: 20px;
+}
+
+.about-card {
+    @media (max-width: 1100px) {
+        display: none;
+    }
+
+    background-color: var(--surface);
+    border-radius: 35px;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+    margin-left: 150px;
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+    width: 450px;
+    height: 365px;
+    position: absolute;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.about-card:hover {
+    background-color: var(--surface-hover);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+}
+
+.about-card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* GitHub / LeetCode stat widgets ----------------------------------- */
+
+.stats-image {
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.3s cubic-bezier(0.4, 2, 0.6, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 2, 0.6, 1);
+}
+
+.stats-image:hover {
+    transform: scale(1.03);
+}
+
+.stats-image--github {
+    width: 405px;
+    margin-top: 20px;
+}
+
+.stats-image--github:hover {
+    box-shadow: 0 0 20px #58c5ff;
+}
+
+.stats-image--leetcode {
+    width: 400px;
+    margin-top: 10px;
+}
+
+.stats-image--leetcode:hover {
+    box-shadow: 0 0 20px #ffa116;
+}

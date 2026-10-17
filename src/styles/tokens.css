@@ -1,0 +1,67 @@
+/* Design tokens: colour, type and surface values for every theme. */
+
+:root {
+    color-scheme: dark;
+
+    --bg: #151517;
+    --bg-section: #1d1e22;
+    --surface: #202126;
+    --surface-hover: #26272c;
+    --surface-alt: #23242a;
+    --surface-tint: #292a31;
+    --border: #26272c;
+    --nav-hover: #3b3d44;
+    --divider: #565b71;
+
+    --toggle-bg: #292a31;
+    --toggle-border: #36373d;
+    --toggle-text: #e5e6ed;
+    --ring: #36373d;
+
+    --text-strong: #e5e6ed;
+    --text-body: #aaacc1;
+    --text-sub: #d3d4db;
+    --text-muted: #bec5d1;
+    --text-nav: #bec0d7;
+    --input-text: #eeeeee;
+
+    --accent: #8aadf4;
+    --accent-green: #74cd89;
+    --link: #6fa5e7;
+    --link-hover: #6ee1a4;
+    --btn-neutral: #5b5b6a;
+    --btn-neutral-text: #d8d8d8;
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+
+    --bg: #f4f5f7;
+    --bg-section: #e8eaee;
+    --surface: #ffffff;
+    --surface-hover: #f2f4f8;
+    --surface-alt: #eef0f4;
+    --surface-tint: #ffffff;
+    --border: #e2e4e9;
+    --nav-hover: #e3e6ec;
+    --divider: #c4c9d4;
+
+    --toggle-bg: #ffffff;
+    --toggle-border: #c9ccd3;
+    --toggle-text: #1a1c22;
+    --ring: #c9ccd3;
+
+    --text-strong: #1a1c22;
+    --text-body: #4b4e59;
+    --text-sub: #2c2f38;
+    --text-muted: #565a66;
+    --text-nav: #33363f;
+    --input-text: #1b1c20;
+
+    --accent: #2f66d0;
+    --accent-green: #178a5b;
+    --link: #2f66d0;
+    --link-hover: #178a5b;
+    --btn-neutral: #d5d8e0;
+    --btn-neutral-text: #2a2d35;
+}

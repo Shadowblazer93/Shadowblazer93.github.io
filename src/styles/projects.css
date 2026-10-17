@@ -1,0 +1,202 @@
+/* Projects section: grids, cards, links and the featured SIERRA card. */
+
+.project-grid {
+    @media (max-width: 700px) {
+        grid-template-columns: 1fr !important;
+    }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.project-grid-vertical {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 0;
+}
+
+.project-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.project-card {
+    background-color: var(--surface);
+    border-radius: 15px;
+    padding: 10px;
+    padding-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+    margin-bottom: 20px;
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.project-card:hover {
+    background-color: var(--surface-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+}
+
+.project-card--compact {
+    padding-bottom: 10px;
+}
+
+.project-title {
+    padding-top: 30px;
+}
+
+.project-tech {
+    font-size: medium;
+    color: var(--accent);
+    vertical-align: -18px;
+    font-weight: 700;
+    line-height: 0;
+}
+
+.project-description-lg {
+    font-size: large;
+}
+
+.accent-green {
+    color: var(--accent-green);
+    font-weight: bold;
+}
+
+.verified-badge {
+    height: 20px;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+.project-image {
+    margin-left: 15px;
+    border-radius: 15px;
+
+    @media (min-width: 1000px) {
+        display: inline-block;
+        max-width: 400px;
+    }
+
+    @media (max-width: 1000px) {
+        display: block;
+        max-width: 330px;
+    }
+}
+
+/* Links ------------------------------------------------------------ */
+
+.project-link {
+    text-decoration: none;
+    color: #393939;
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 1.1em;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    border-radius: 10px;
+    background-color: #8aadf4;
+    padding: 5px 5px;
+    transition:
+        background 0.3s,
+        box-shadow 0.2s;
+}
+
+.project-link-dark {
+    text-decoration: none;
+    color: #393939;
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 1.1em;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    border-radius: 10px;
+    background-color: #23242a;
+    padding: 5px 5px;
+    transition:
+        background 0.3s,
+        box-shadow 0.2s;
+}
+
+.project-link:hover {
+    background-color: #c9d5e6;
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+}
+
+.project-link-dark:hover {
+    background-color: #4c4f69;
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+}
+
+.project-link-dark span,
+.project-link-dark .external-icon {
+    color: #d0d4db;
+}
+
+/* Layout modifiers (kept last so they win over the base margins). */
+.project-link--indent,
+.project-link-dark--indent {
+    margin-left: 20px;
+}
+
+.project-link--lead {
+    margin-left: 210px;
+}
+
+/* Featured (SIERRA) card ------------------------------------------- */
+
+.featured-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.featured-media {
+    flex: 1 1 1;
+    min-width: 260px;
+}
+
+.featured-video {
+    padding-left: 20px;
+    border-radius: 10px;
+}
+
+.featured-divider {
+    width: 5px;
+    background: var(--divider);
+    align-self: stretch;
+    border-radius: 2px;
+}
+
+.featured-text {
+    flex: 1;
+}
+
+.featured-title-inline {
+    display: inline-block;
+}
+
+.project-tech--featured {
+    display: inline-block;
+    margin-left: 14px;
+    font-size: medium;
+    color: var(--accent);
+    vertical-align: middle;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.featured-heading {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--text-strong);
+    font-size: 23px;
+}
+
+.featured-description {
+    font-size: large;
+}
