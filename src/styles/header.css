@@ -107,17 +107,21 @@ a.header-shortcut:hover {
 
 .header-links {
     @media (min-width: 1150px) {
-        display: inline-block;
-        padding-left: calc(72% - 700px);
+        /* Float to the right edge of the header so the buttons leave no dead
+           space on the right, without making the header a flex container. */
+        float: right;
+        padding-right: 20px;
     }
 
     @media (max-width: 1150px) {
+        float: none;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: start;
+        justify-content: flex-end;
         padding-top: 10px;
         padding-left: 20px;
+        padding-right: 20px;
         align-items: center;
         font-size: small;
         font-weight: 900;
@@ -125,29 +129,26 @@ a.header-shortcut:hover {
     }
 }
 
+/* Outbound buttons mirror the project / demo pill buttons (.project-link):
+   same radius, padding, weight and shadow-only hover. Their brand colours are
+   kept, so unlike .project-link they never change background on hover. */
 a.header-link {
     display: inline-flex;
     vertical-align: middle;
-    width: 130px;
-    justify-content: center;
-    text-decoration: none;
     align-items: center;
+    text-decoration: none;
     color: white;
-    padding: 10px 0px;
+    padding: 8px 8px;
     gap: 7px;
     margin-bottom: 5px;
     margin-right: 0px;
-    border-radius: 20px;
-    font-weight: 500;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 1.1em;
-    outline: var(--ring) 3px solid;
-    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
     transition:
-        background 0.2s,
-        box-shadow 0.2s,
-        color 0.2s,
-        transform 0.2s;
+        background 0.3s,
+        box-shadow 0.2s;
 }
 
 a.header-link img {
@@ -155,10 +156,12 @@ a.header-link img {
 }
 
 a.header-link:hover {
-    background-color: var(--nav-hover);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
-    color: var(--accent);
-    transform: translateY(-5px);
+}
+
+a.header-link:focus-visible {
+    outline: var(--accent) 3px solid;
+    outline-offset: 2px;
 }
 
 /* Element-qualified so they outrank the `a.header-link` base rule. */
