@@ -92,17 +92,23 @@
 
 .project-link {
     text-decoration: none;
-    color: #393939;
+    color: var(--on-accent);
     margin-left: 10px;
     font-weight: 700;
     font-size: 1.1em;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
     border-radius: 10px;
-    background-color: #8aadf4;
+    background-color: var(--accent);
     padding: 5px 5px;
     transition:
         background 0.3s,
         box-shadow 0.2s;
+}
+
+/* The button icons are black marks, so flip them in light mode where the
+   Catppuccin Latte blue background is dark. */
+[data-theme="light"] .project-link .link-icon {
+    filter: invert(1);
 }
 
 .project-link-dark {
@@ -121,7 +127,7 @@
 }
 
 .project-link:hover {
-    background-color: #c9d5e6;
+    background-color: var(--accent-hover);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 

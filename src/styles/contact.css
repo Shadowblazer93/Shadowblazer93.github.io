@@ -36,8 +36,8 @@ textarea.contact-input {
     padding: 12px;
     border-radius: 6px;
     border: none;
-    background: #169b5f;
-    color: #fff;
+    background: var(--accent-green);
+    color: var(--on-accent);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;

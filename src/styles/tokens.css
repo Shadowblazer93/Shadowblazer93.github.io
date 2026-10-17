@@ -1,23 +1,29 @@
-/* Design tokens: colour, type and surface values for every theme. */
+/* Design tokens: colour, type and surface values for every theme.
+   Every colour is an alias of the Catppuccin palette (@catppuccin/palette):
+   dark mode is Macchiato, light mode is Latte. The package stylesheet
+   (imported in index.css) publishes each flavour as --ctp-<flavour>-<colour>
+   variables, which the semantic tokens below point at. */
 
 :root {
     color-scheme: dark;
 
-    --bg: #151517;
-    --bg-section: #1d1e22;
-    --surface: #202126;
-    --surface-hover: #26272c;
-    --surface-alt: #23242a;
-    --surface-tint: #292a31;
-    --border: #26272c;
-    --nav-hover: #3b3d44;
-    --divider: #565b71;
+    /* Surfaces (Macchiato). */
+    --bg: var(--ctp-macchiato-base);
+    --bg-section: var(--ctp-macchiato-mantle);
+    --surface: var(--ctp-macchiato-surface0);
+    --surface-hover: var(--ctp-macchiato-surface1);
+    --surface-alt: var(--ctp-macchiato-mantle);
+    --surface-tint: var(--ctp-macchiato-surface0);
+    --border: var(--ctp-macchiato-surface1);
+    --nav-hover: var(--ctp-macchiato-surface1);
+    --divider: var(--ctp-macchiato-surface2);
 
-    --toggle-bg: #292a31;
-    --toggle-border: #36373d;
+    --toggle-bg: var(--ctp-macchiato-surface0);
+    --toggle-border: var(--ctp-macchiato-surface1);
     --toggle-text: #e5e6ed;
-    --ring: #36373d;
+    --ring: var(--ctp-macchiato-surface2);
 
+    /* Text colours are intentionally left as-is. */
     --text-strong: #e5e6ed;
     --text-body: #aaacc1;
     --text-sub: #d3d4db;
@@ -25,31 +31,43 @@
     --text-nav: #bec0d7;
     --input-text: #eeeeee;
 
-    --accent: #8aadf4;
-    --accent-green: #74cd89;
-    --link: #6fa5e7;
-    --link-hover: #6ee1a4;
-    --btn-neutral: #5b5b6a;
+    /* Accents: Catppuccin blue, with green / red sidekicks. */
+    --accent: var(--ctp-macchiato-blue);
+    --accent-hover: var(--ctp-macchiato-lavender);
+    --accent-green: var(--ctp-macchiato-green);
+    /* Foreground used on top of a solid accent-coloured surface. */
+    --on-accent: var(--ctp-macchiato-crust);
+    /* These stay fixed regardless of theme: the experience/CCA cards keep their
+       Macchiato colours and the experience highlight keeps its Latte red, so
+       they are deliberately not re-declared in the light block below. */
+    --experience-card-bg: var(--ctp-macchiato-yellow);
+    --cca-card-bg: var(--ctp-macchiato-green);
+    --card-hover: var(--ctp-macchiato-sky);
+    --accent-red: var(--ctp-latte-red);
+    --link: var(--ctp-macchiato-blue);
+    --link-hover: var(--ctp-macchiato-green);
+    --btn-neutral: var(--ctp-macchiato-surface2);
     --btn-neutral-text: #d8d8d8;
 }
 
 [data-theme="light"] {
     color-scheme: light;
 
-    --bg: #f4f5f7;
-    --bg-section: #e8eaee;
-    --surface: #ffffff;
-    --surface-hover: #f2f4f8;
-    --surface-alt: #eef0f4;
-    --surface-tint: #ffffff;
-    --border: #e2e4e9;
-    --nav-hover: #e3e6ec;
-    --divider: #c4c9d4;
+    /* Surfaces (Latte). */
+    --bg: var(--ctp-latte-mantle);
+    --bg-section: var(--ctp-latte-crust);
+    --surface: var(--ctp-latte-base);
+    --surface-hover: var(--ctp-latte-surface0);
+    --surface-alt: var(--ctp-latte-crust);
+    --surface-tint: var(--ctp-latte-base);
+    --border: var(--ctp-latte-surface0);
+    --nav-hover: var(--ctp-latte-surface0);
+    --divider: var(--ctp-latte-surface1);
 
-    --toggle-bg: #ffffff;
-    --toggle-border: #c9ccd3;
+    --toggle-bg: var(--ctp-latte-base);
+    --toggle-border: var(--ctp-latte-surface1);
     --toggle-text: #1a1c22;
-    --ring: #c9ccd3;
+    --ring: var(--ctp-latte-surface1);
 
     --text-strong: #1a1c22;
     --text-body: #4b4e59;
@@ -58,10 +76,12 @@
     --text-nav: #33363f;
     --input-text: #1b1c20;
 
-    --accent: #2f66d0;
-    --accent-green: #178a5b;
-    --link: #2f66d0;
-    --link-hover: #178a5b;
-    --btn-neutral: #d5d8e0;
+    --accent: var(--ctp-latte-blue);
+    --accent-hover: var(--ctp-latte-lavender);
+    --accent-green: var(--ctp-latte-green);
+    --on-accent: var(--ctp-latte-base);
+    --link: var(--ctp-latte-blue);
+    --link-hover: var(--ctp-latte-green);
+    --btn-neutral: var(--ctp-latte-surface1);
     --btn-neutral-text: #2a2d35;
 }

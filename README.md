@@ -46,6 +46,10 @@ src/
   stays inline in `index.html`.
 - **Styling**: `src/styles/`, split into tokens, base, header, about,
   experience, projects and contact. `index.css` controls the cascade order.
+- **Colour**: `tokens.css` aliases the [Catppuccin](https://catppuccin.com)
+  palette (`@catppuccin/palette`, imported in `index.css`). Dark mode uses
+  **Macchiato**, light mode uses **Latte**, and blue is the accent. Change a
+  flavour's colours by editing the `--ctp-*` aliases only.
 
 ## Deployment
 

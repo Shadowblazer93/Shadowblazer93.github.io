@@ -7,7 +7,7 @@
 }
 
 .experience-card {
-    background-color: #e5c890;
+    background-color: var(--experience-card-bg);
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding-bottom: 20px;
@@ -22,13 +22,13 @@
 }
 
 .experience-card:hover {
-    background-color: #85c1dc;
+    background-color: var(--card-hover);
     transform: translateY(-3px);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 
 .cca-card {
-    background-color: #ade39f;
+    background-color: var(--cca-card-bg);
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding-bottom: 20px;
@@ -43,7 +43,7 @@
 }
 
 .cca-card:hover {
-    background-color: #85c1dc;
+    background-color: var(--card-hover);
     transform: translateY(-3px);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }

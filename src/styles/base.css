@@ -44,7 +44,12 @@ h1:hover {
 }
 
 .breathing-gradient {
-    background: linear-gradient(90deg, #008cff, #58f95d, #008cff);
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent-green),
+        var(--accent)
+    );
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -177,7 +182,7 @@ footer {
 }
 
 .text-highlight {
-    color: #ee3f3f;
+    color: var(--accent-red);
     font-weight: bold;
 }
 
