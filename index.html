@@ -8,6 +8,24 @@
     <link rel="icon" type="image/png" href="./assets/favicon.png">
     <link href="./style/style.css" rel="stylesheet">
 
+    <script>
+      // Apply the saved theme preference before the page paints to avoid a flash of the wrong theme.
+      // The preference is one of: "system" (default), "dark", or "light".
+      (function () {
+        var preference = 'system';
+        try {
+          var saved = localStorage.getItem('theme-preference');
+          if (saved === 'system' || saved === 'dark' || saved === 'light') {
+            preference = saved;
+          }
+        } catch (e) {}
+
+        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = preference === 'system' ? (systemDark ? 'dark' : 'light') : preference;
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -35,6 +53,27 @@
         </div>
 
         <div class="header-links">
+          <div class="theme-switcher">
+            <button class="theme-toggle" type="button" aria-label="Theme: System" aria-haspopup="true">
+              <i class="fa fa-sun-o theme-icon-sun" aria-hidden="true"></i>
+              <i class="fa fa-moon-o theme-icon-moon" aria-hidden="true"></i>
+            </button>
+            <div class="theme-menu" role="menu" aria-label="Color theme">
+              <button type="button" class="theme-option" data-theme-choice="system" role="menuitemradio" aria-checked="false">
+                <i class="fa fa-desktop" aria-hidden="true"></i>
+                <span>System</span>
+              </button>
+              <button type="button" class="theme-option" data-theme-choice="dark" role="menuitemradio" aria-checked="false">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+                <span>Dark</span>
+              </button>
+              <button type="button" class="theme-option" data-theme-choice="light" role="menuitemradio" aria-checked="false">
+                <i class="fa fa-sun-o" aria-hidden="true"></i>
+                <span>Light</span>
+              </button>
+            </div>
+          </div>
+
           <a class="header-link" href="https://github.com/Shadowblazer93" target="_blank" style="background-color: #0e1012; margin-right: 7px;">
             <img src="assets/github-mark-white.png" style="height: 25px;">
             Github
@@ -53,7 +92,7 @@
       </header>
 
       <!-- Floating Header -->
-      <div id="floating-header" style="position:fixed;top:0;left:0;width:100%;background:#202126;box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:999;display:flex;align-items:center;justify-content:center;transition:none;padding:0; transition: cubic-bezier(0.55, 0.085, 0.68, 0.53); transition-duration: 100ms; border-bottom: #26272c   5px solid;">
+      <div id="floating-header" style="position:fixed;top:0;left:0;width:100%;background:var(--surface);box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:999;display:flex;align-items:center;justify-content:center;transition:none;padding:0; transition: cubic-bezier(0.55, 0.085, 0.68, 0.53); transition-duration: 100ms; border-bottom: var(--border)   5px solid;">
         <div class="container" style="width:100%;">
             <header id="floating-header-inner" style="margin:0; border-bottom: none;"></header>
             <script>
@@ -112,6 +151,112 @@
         });
       </script>
 
+      <script>
+        // Theme control with three preferences: system (default), dark and light.
+        // - Clicking the button cycles: system -> dark -> light -> system.
+        // - Hovering (or focusing) the button reveals a menu to choose directly.
+        // - The main button always shows sun/moon for the resolved theme, never the
+        //   computer icon (that only appears inside the menu).
+        // Event delegation keeps the copy inside the floating header in sync.
+        (function () {
+          var CHOICES = ['system', 'dark', 'light'];
+          var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+          function preference() {
+            try {
+              var saved = localStorage.getItem('theme-preference');
+              if (saved === 'system' || saved === 'dark' || saved === 'light') {
+                return saved;
+              }
+            } catch (e) {}
+            return 'system';
+          }
+
+          function resolvedTheme(pref) {
+            if (pref === 'dark' || pref === 'light') return pref;
+            return media && media.matches ? 'dark' : 'light';
+          }
+
+          function setPreference(pref) {
+            try {
+              localStorage.setItem('theme-preference', pref);
+            } catch (e) {}
+            render();
+          }
+
+          // The GitHub stats widget is an external image whose colours come from
+          // hex values in its URL, so swap those parameters to match the theme.
+          var STATS_COLORS = {
+            dark: '&bg_color=101010&text_color=f0f0f0&title_color=58c5ff',
+            light: '&bg_color=ffffff&text_color=1a1c22&title_color=2f66d0'
+          };
+
+          function updateStatsWidget(theme) {
+            var img = document.getElementById('github-stats');
+            if (!img) return;
+            var base = img.getAttribute('data-src');
+            if (!base) return;
+            var next = base + STATS_COLORS[theme === 'light' ? 'light' : 'dark'];
+            if (img.getAttribute('src') !== next) {
+              img.setAttribute('src', next);
+            }
+          }
+
+          function render() {
+            var pref = preference();
+            var theme = resolvedTheme(pref);
+            document.documentElement.setAttribute('data-theme', theme);
+
+            var label = 'Theme: ' + pref.charAt(0).toUpperCase() + pref.slice(1) +
+              ' (click to cycle, hover to choose)';
+            document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+              btn.setAttribute('aria-label', label);
+              btn.setAttribute('data-preference', pref);
+            });
+
+            document.querySelectorAll('[data-theme-choice]').forEach(function (option) {
+              var active = option.getAttribute('data-theme-choice') === pref;
+              option.classList.toggle('active', active);
+              option.setAttribute('aria-checked', active ? 'true' : 'false');
+            });
+
+            updateStatsWidget(theme);
+          }
+
+          document.addEventListener('click', function (e) {
+            var target = e.target;
+            if (!target || !target.closest) return;
+
+            var option = target.closest('[data-theme-choice]');
+            if (option) {
+              setPreference(option.getAttribute('data-theme-choice'));
+              return;
+            }
+
+            var btn = target.closest('.theme-toggle');
+            if (btn) {
+              var next = CHOICES[(CHOICES.indexOf(preference()) + 1) % CHOICES.length];
+              setPreference(next);
+            }
+          });
+
+          if (media) {
+            var onChange = function () {
+              if (preference() === 'system') render();
+            };
+            if (media.addEventListener) {
+              media.addEventListener('change', onChange);
+            } else if (media.addListener) {
+              media.addListener(onChange);
+            }
+          }
+
+          render();
+          // The stats widget lives further down the page, so refresh once it is parsed too.
+          window.addEventListener('DOMContentLoaded', render);
+        })();
+      </script>
+
       <h4 style="margin-top:50px;"></h4>
 
       <a id="about-me"></a>
@@ -145,7 +290,7 @@
           <!-- <p class="about-list">Organizational Analysis | <a class="credential" href="https://www.coursera.org/account/accomplishments/verify/N6J46BT1QEQY">Credential <i class="fa fa-external-link" style="font-size: small;"></i></a></p> -->
           <p class="about-list">Scientific Computing with Python | <a class="credential" href="https://freecodecamp.org/certification/fcceeb15765-abe1-4ffc-bc0b-247f455db2fa/scientific-computing-with-python-v7">Credential <i class="fa fa-external-link" style="font-size: small;"></i></a></p>
           <!-- <p class="about-list">Javascript Algorithms & Data-Structures | <a class="credential" href="https://freecodecamp.org/certification/fcceeb15765-abe1-4ffc-bc0b-247f455db2fa/javascript-algorithms-and-data-structures">Credential <i class="fa fa-external-link" style="font-size: small;"></i></a></p> -->
-          <hr style="border: 1px solid #444; margin: 20px;">
+          <hr style="border: 1px solid var(--input-border); margin: 20px;">
         </div>
 
         <div class="about-card">
@@ -153,11 +298,13 @@
             <!-- <img src="assets/favicon.png" style="height:370px; width:370px; border-radius: 50%; margin-bottom: 20px; margin-top:20px;"> -->
             <a href="https://github.com/Shadowblazer93" target="_blank" style="text-decoration: none; color: inherit;">
               <img
-                src="https://github-readme-stats-eight-theta.vercel.app/api?username=Shadowblazer93&hide_border=true&include_all_commits=true&count_private=true&bg_color=101010&text_color=f0f0f0&title_color=58c5ff&hide=contribs"
-                style="width:405px; margin-top:20px; border-radius: 20px; transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1);"
+                id="github-stats"
+                data-src="https://github-readme-stats-eight-theta.vercel.app/api?username=Shadowblazer93&hide_border=true&include_all_commits=true&count_private=true&hide=contribs"
+                src="https://github-readme-stats-eight-theta.vercel.app/api?username=Shadowblazer93&hide_border=true&include_all_commits=true&count_private=true&hide=contribs&bg_color=101010&text_color=f0f0f0&title_color=58c5ff"
+                style="width:405px; margin-top:20px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1);"
                 alt="my Github Stats"
                 onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 0px 20px #58c5ff';"
-                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)';"
               />
             </a>
 
@@ -167,7 +314,7 @@
               style="width: 400px; box-shadow: 0 2px 8px rgba(0,0,0,0.12); margin-top: 10px; border-radius: 20px;transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1);"
               alt="my Leetcode Stats"
               onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 0px 20px #ffa116';"
-              onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+              onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.12)';"
               />
             </a>
           </div>
@@ -197,7 +344,7 @@
         });
       </script>
 
-      <div class="full-bleed" style="background: #1d1e22;">
+      <div class="full-bleed" style="background: var(--bg-section);">
         <h2 style="text-align: center;">Experience</h2>
 
         <div class="experience-grid">
@@ -238,7 +385,7 @@
       <a id="cca"></a>
       <br style="margin-top: 20px;">
 
-      <div class="full-bleed" style="background: #1d1e22;">
+      <div class="full-bleed" style="background: var(--bg-section);">
         <h2 style="text-align: center; font-size: 25px;">Co-Curricular Activities (CCAs)</h2>
 
         <div class="experience-grid">
@@ -282,12 +429,12 @@
 
       <div class="project-card">
           <!-- <h1 style="display:inline-block;">SIERRA</h1>
-          <p style="display:inline-block; margin-left:14px; font-size: medium; color: #7dc3f9; vertical-align: middle; font-weight: 700; line-height: 1;"> React.js, Neo4j, Javascript, Docker </p>
+          <p style="display:inline-block; margin-left:14px; font-size: medium; color: var(--accent); vertical-align: middle; font-weight: 700; line-height: 1;"> React.js, Neo4j, Javascript, Docker </p>
           <br>
           <iframe style="padding-left: 20px; border-radius: 10px;" width="560" height="315" src="https://www.youtube.com/embed/ogFBnBrBaP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
 
           <h1 style="display:inline-block;">SIERRA</h1>
-          <p style="display:inline-block; margin-left:14px; font-size: medium; color: #7dc3f9; vertical-align: middle; font-weight: 700; line-height: 1;"> React.js, Neo4j, Javascript, Docker </p>
+          <p style="display:inline-block; margin-left:14px; font-size: medium; color: var(--accent); vertical-align: middle; font-weight: 700; line-height: 1;"> React.js, Neo4j, Javascript, Docker </p>
 
           <a class="project-link" href="https://github.com/Shadowblazer93/SIERRA" target="_blank" style="margin-left: 210px;">
           <img src="assets/github-mark.png" style="height: 20px; vertical-align: middle; padding-right: 3px; padding-bottom: 5px;">
@@ -311,11 +458,11 @@
             </div>
 
             <!-- Separator -->
-            <div style="width:5px; background:#565b71; align-self:stretch; border-radius:2px;"></div>
+            <div style="width:5px; background:var(--divider); align-self:stretch; border-radius:2px;"></div>
 
             <!-- Right: bullet points -->
             <div style="flex:1;">
-              <h1 style="margin-top:0; margin-bottom:8px; color: #ddd; font-size:23px;">Build Neo4j queries visually.</h1>
+              <h1 style="margin-top:0; margin-bottom:8px; color: var(--text-strong); font-size:23px;">Build Neo4j queries visually.</h1>
               <p style="font-size: large;">
                 Visual query builder for property graphs.<br><br>
                 • Real-time graph to cypher query translation.<br>
@@ -333,8 +480,8 @@
         <!-- /Project1 -->
         <div class="project-card">
           <h1 style="padding-top: 30px;">Lilian : Discord Bot</h1>
-          <p style="font-size: medium; color: #7dc3f9; vertical-align: -18px; font-weight: 700; line-height: 0;"> Javascript, Node.js, discord.js, npm</p>
-          <p style="font-size: large;">A moderation, utility and social bot for Discord.<br>Built using <span style="color: #74cd89; font-weight: bold;">Node.js</span> and deployed 24/7 on the cloud.<br>Integrated external APIs for real-time content inside discord.</p>
+          <p style="font-size: medium; color: var(--accent); vertical-align: -18px; font-weight: 700; line-height: 0;"> Javascript, Node.js, discord.js, npm</p>
+          <p style="font-size: large;">A moderation, utility and social bot for Discord.<br>Built using <span style="color: var(--accent-green); font-weight: bold;">Node.js</span> and deployed 24/7 on the cloud.<br>Integrated external APIs for real-time content inside discord.</p>
           <p style="font-size:large;">
             Verified by Discord
             <img src="assets/discord_verified_check.png" style="height: 20px; vertical-align: middle; padding-left: 5px;">
@@ -361,7 +508,7 @@
         <!-- /Project2 -->
         <div class="project-card" style="padding-bottom:20px;">
           <h1 style="padding-top: 30px;">Portfolio Website</h1>
-          <p style="font-size: medium; color: #7dc3f9; vertical-align: -18px; font-weight: 700; line-height: 0;">HTML/CSS, Javascript</p>
+          <p style="font-size: medium; color: var(--accent); vertical-align: -18px; font-weight: 700; line-height: 0;">HTML/CSS, Javascript</p>
           <p style="font-size: large;">Website to display my achievements and contact info.<br><br>Built from the ground up using custom animations.<br>Real-time Github and leetcode widget integration.<br>Hosted using Github pages.</p>
 
           <img class="project-image" src="assets/portfolio.png">
@@ -378,7 +525,7 @@
         <!-- /Project3 -->
         <div class="project-card" style="padding-bottom:10px;">
           <h1 style="padding-top: 30px;">BTO Management System</h1>
-          <p style="font-size: medium; color: #7dc3f9; vertical-align: -18px; font-weight: 700; line-height: 0;"> Java, HTML/CSS, UML</p>
+          <p style="font-size: medium; color: var(--accent); vertical-align: -18px; font-weight: 700; line-height: 0;"> Java, HTML/CSS, UML</p>
           <p style="font-size: large;">An application to manage and submit BTO applications.<br>Applied OOP and SOLID design principles.<br>Persistent Data through CSV storage.</p>
 
           <br>
@@ -404,7 +551,7 @@
         </div>
       </div> -->
 
-      <button id="back-to-top" style="position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000; padding: 12px 18px; border-radius: 50%; border: none; background: #5b5b6a; color: rgb(216, 216, 216); font-size: 22px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-weight: 700; font-family: 'Inter', sans-serif;">
+      <button id="back-to-top" style="position: fixed; bottom: 30px; right: 30px; display: none; z-index: 1000; padding: 12px 18px; border-radius: 50%; border: none; background: var(--btn-neutral); color: var(--btn-neutral-text); font-size: 22px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2); font-weight: 700; font-family: 'Inter', sans-serif;">
         ↑
       </button>
       <script>
@@ -422,16 +569,16 @@
       </script>
 
       <a id="contact"></a>
-      <section class="contact-section" style="margin: 60px 0 40px 0; padding: 30px 50px; background: #23242a; border-radius: 18px; max-width: auto; margin-left: auto; margin-right: auto;">
+      <section class="contact-section" style="margin: 60px 0 40px 0; padding: 30px 50px; background: var(--surface-alt); border-radius: 18px; max-width: auto; margin-left: auto; margin-right: auto;">
         <h2 style="text-align:center; margin-bottom: 30px;">Contact Me</h2>
         <form action="https://formspree.io/f/movwkqvq" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
-          <input type="text" name="name" placeholder="Your Name" class="contact-input" required style="padding: 10px;border-radius: 10px;border: 1px solid #444;background: #292a31;color: #eee;font-size:larger;font-family: 'Inter', 'Segoe UI', Arial, sans-serif;">
-          <input type="email" name="email" placeholder="Your Email" class="contact-input" required style="padding: 10px;border-radius: 10px;border: 1px solid #444;background: #292a31;color: #eee;font-size:larger;font-family: 'Inter', 'Segoe UI', Arial, sans-serif;">
-          <textarea name="message" placeholder="Your Message" rows="5" class="contact-input" required style="padding: 10px;border-radius: 10px;border: 1px solid #444;background: #292a31;color: #eee;font-size:larger;font-family: 'Inter', 'Segoe UI', Arial, sans-serif;resize: vertical; min-height: 30px;"></textarea>
+          <input type="text" name="name" placeholder="Your Name" class="contact-input" required style="padding: 10px;border-radius: 10px;border: 1px solid var(--input-border);background: var(--surface-tint);color: var(--input-text);font-size:larger;font-family: 'Inter', 'Segoe UI', Arial, sans-serif;">
+          <input type="email" name="email" placeholder="Your Email" class="contact-input" required style="padding: 10px;border-radius: 10px;border: 1px solid var(--input-border);background: var(--surface-tint);color: var(--input-text);font-size:larger;font-family: 'Inter', 'Segoe UI', Arial, sans-serif;">
+          <textarea name="message" placeholder="Your Message" rows="5" class="contact-input" required style="padding: 10px;border-radius: 10px;border: 1px solid var(--input-border);background: var(--surface-tint);color: var(--input-text);font-size:larger;font-family: 'Inter', 'Segoe UI', Arial, sans-serif;resize: vertical; min-height: 30px;"></textarea>
             <button type="submit" class="contact-send">Send</button>
         </form>
-        <p style="text-align:center; margin-top: 18px; color: #aaa; font-size: 0.95em;">
-          Or email me directly at <a href="mailto:azam93khalid@gmail.com" style="color:#74cd89;">azam93khalid@gmail.com</a>
+        <p style="text-align:center; margin-top: 18px; color: var(--text-muted); font-size: 0.95em;">
+          Or email me directly at <a href="mailto:azam93khalid@gmail.com" style="color:var(--accent-green);">azam93khalid@gmail.com</a>
         </p>
       </section>
 
