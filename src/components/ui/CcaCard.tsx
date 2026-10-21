@@ -1,18 +1,14 @@
 import type { CcaItem } from "../../data/types";
 
-/** A single co-curricular activity entry. */
-export function CcaCard({ role, org, period, location, logo, logoAlt }: CcaItem) {
+/** A single co-curricular activity entry, rendered as a compact pill. */
+export function CcaCard({ role, org, period, tone }: CcaItem) {
   return (
-    <article className="cca-card">
-      <div className="exp-title-row">
-        <h1 className="card-title">{role}</h1>
-        <img className="exp-logo" src={logo} alt={logoAlt} />
-      </div>
-
-      <p className="exp-org">{org}</p>
-      <p className="exp-meta">
-        {period} | {location}
-      </p>
+    <article className={`cca-card${tone ? ` cca-card--${tone}` : ""}`}>
+      <span className="cca-title">
+        <span className="cca-role">{role}</span>
+        <span className="cca-org">, {org}</span>
+      </span>
+      <span className="cca-period">{period}</span>
     </article>
   );
 }

@@ -31,18 +31,23 @@
     background-color: var(--experience-card-bg-green);
 }
 
+/* Compact pill keeping the capsule look without the card's bulk. */
 .cca-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 12px;
     background-color: var(--cca-card-bg);
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding-bottom: 20px;
-    margin-bottom: 10px;
+    padding: 8px 22px;
     transition:
         background 0.2s,
         transform 0.2s,
         box-shadow 0.2s;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
-    color: #e5e6ed;
+    color: #23242a;
     position: relative;
 }
 
@@ -50,6 +55,27 @@
     background-color: var(--card-hover);
     transform: translateY(-3px);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+}
+
+.cca-card--teal {
+    background-color: var(--cca-card-bg-teal);
+}
+
+.cca-role {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.cca-org {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.cca-period {
+    margin-left: auto;
+    font-size: 1.2em;
+    font-weight: 500;
+    white-space: nowrap;
 }
 
 .exp-title-row {

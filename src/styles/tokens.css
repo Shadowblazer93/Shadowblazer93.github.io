@@ -59,7 +59,8 @@
        they are deliberately not re-declared in the light block below. */
     --experience-card-bg: var(--ctp-macchiato-yellow);
     --experience-card-bg-green: var(--ctp-macchiato-green);
-    --cca-card-bg: var(--ctp-macchiato-green);
+    --cca-card-bg: var(--ctp-macchiato-sapphire);
+    --cca-card-bg-teal: var(--ctp-macchiato-teal);
     --card-hover: var(--ctp-macchiato-sky);
     --accent-red: var(--ctp-latte-red);
     --link: var(--ctp-macchiato-blue);

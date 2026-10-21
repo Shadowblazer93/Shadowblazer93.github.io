@@ -45,9 +45,8 @@ export interface CcaItem {
   role: string;
   org: string;
   period: string;
-  location: string;
-  logo: string;
-  logoAlt: string;
+  /** Optional accent for the pill background (defaults to Macchiato green). */
+  tone?: "teal";
 }
 
 export interface ProjectImage {
