@@ -2,6 +2,15 @@ import type { ExperienceItem } from "./types";
 
 export const experience: ExperienceItem[] = [
   {
+    role: "Incoming Full Stack Developer Intern",
+    org: "Seagate Technologies",
+    period: "Jan 2027 - May 2027",
+    location: "Singapore",
+    logo: "/assets/seagate_logo.png",
+    logoAlt: "Seagate Logo",
+    tone: "green",
+  },
+  {
     role: "Undergraduate Research Assistant",
     org: "Nanyang Technological University, Singapore",
     period: "Sept 2025 - Current",

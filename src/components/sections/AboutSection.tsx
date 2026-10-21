@@ -8,10 +8,22 @@ export function AboutSection() {
       <h2 className="heading-inline">About </h2>
       <h2 className="breathing-gradient">Me</h2>
       <p>
-        Year 2 Student at NTU, Singapore
+        Year 3 Student at NTU, Singapore
         <br />
         Computer Science : <b>Honours (Highest Distinction)</b>
       </p>
+      <ul className="about-bullets">
+        <li>
+          <a
+            className="credential"
+            href="https://lnkd.in/p/eCA42VAy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            CCDS Dean’s List for Academic Year 2025-2026
+          </a>
+        </li>
+      </ul>
 
       <br />
 

@@ -58,6 +58,7 @@
        Macchiato colours and the experience highlight keeps its Latte red, so
        they are deliberately not re-declared in the light block below. */
     --experience-card-bg: var(--ctp-macchiato-yellow);
+    --experience-card-bg-green: var(--ctp-macchiato-green);
     --cca-card-bg: var(--ctp-macchiato-green);
     --card-hover: var(--ctp-macchiato-sky);
     --accent-red: var(--ctp-latte-red);

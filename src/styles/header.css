@@ -130,7 +130,7 @@ a.header-shortcut:hover {
 }
 
 /* Outbound buttons mirror the project / demo pill buttons (.project-link):
-   same radius, padding, weight and shadow-only hover. Their brand colours are
+   same radius, padding, weight and lift/shadow hover. Their brand colours are
    kept, so unlike .project-link they never change background on hover. */
 a.header-link {
     display: inline-flex;
@@ -148,7 +148,8 @@ a.header-link {
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
     transition:
         background 0.3s,
-        box-shadow 0.2s;
+        box-shadow 0.2s,
+        transform 0.2s;
 }
 
 a.header-link img {
@@ -157,6 +158,7 @@ a.header-link img {
 
 a.header-link:hover {
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+    transform: translateY(-5px);
 }
 
 a.header-link:focus-visible {

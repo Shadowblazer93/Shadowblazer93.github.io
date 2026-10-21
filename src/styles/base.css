@@ -102,6 +102,16 @@ p.about-list {
     }
 }
 
+ul.about-bullets {
+    color: var(--text-body);
+    font-size: 1.4em;
+    font-weight: 500;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    margin: -20px 20px 0;
+    padding-left: 30px;
+}
+
 .credential {
     color: var(--link);
     font-size: 0.85em;

@@ -35,6 +35,8 @@ export interface ExperienceItem {
   location: string;
   logo: string;
   logoAlt: string;
+  /** Optional accent for the card background (defaults to Macchiato yellow). */
+  tone?: "green";
   description?: ReactNode;
   links?: ProjectLinkItem[];
 }

@@ -10,11 +10,14 @@ export function ExperienceCard({
   location,
   logo,
   logoAlt,
+  tone,
   description,
   links,
 }: ExperienceItem) {
   return (
-    <article className="experience-card">
+    <article
+      className={`experience-card${tone ? ` experience-card--${tone}` : ""}`}
+    >
       <div className="exp-title-row">
         <h1 className="card-title">{role}</h1>
         <img className="exp-logo" src={logo} alt={logoAlt} />

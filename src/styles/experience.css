@@ -27,6 +27,10 @@
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 
+.experience-card--green {
+    background-color: var(--experience-card-bg-green);
+}
+
 .cca-card {
     background-color: var(--cca-card-bg);
     border-radius: 15px;
