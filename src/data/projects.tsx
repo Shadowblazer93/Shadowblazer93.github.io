@@ -4,7 +4,7 @@ import type { FeaturedProjectItem, ProjectItem } from "./types";
 export const featuredProject: FeaturedProjectItem = {
   title: "SIERRA",
   tech: "React.js, Neo4j, Javascript, Docker",
-  videoSrc: "https://www.youtube.com/embed/ogFBnBrBaP8",
+  videoSrc: "https://www.youtube.com/embed/MLASpZMiEFk",
   videoTitle: "YouTube video player",
   heading: "Build Neo4j queries visually.",
   description: (
@@ -40,7 +40,7 @@ export const featuredProject: FeaturedProjectItem = {
     },
     {
       label: "Demo",
-      href: "https://youtu.be/ogFBnBrBaP8",
+      href: "https://youtu.be/MLASpZMiEFk",
       icon: "/assets/video_black.png",
       variant: "light",
     },
@@ -93,25 +93,25 @@ export const lilianProject: ProjectItem = {
 };
 
 export const portfolioProject: ProjectItem = {
-  title: "Portfolio Website",
-  tech: "HTML/CSS, Javascript",
+  title: "Compendium: AI Context Compiler",
+  tech: "Python, MCP, EasyOCR, OpenCV, Docker",
   image: { src: "/assets/portfolio.png", alt: "Portfolio website preview" },
   description: (
     <p className="project-description-lg">
-      Website to display my achievements and contact info.
+      Compile your project into one single markdown document.
       <br />
       <br />
-      Built from the ground up using custom animations.
+      Supports 13+ file formats, including images, audio, and video.
       <br />
-      Real-time Github and leetcode widget integration.
+      Advanced OCR with Ollama-powered computer vision.
       <br />
-      Hosted using Github pages.
+      MCP integration with structured, chunk-level access.
     </p>
   ),
   links: [
     {
       label: "Github",
-      href: "https://github.com/Shadowblazer93/Shadowblazer93.github.io",
+      href: "https://github.com/Shadowblazer93/Compendium",
       icon: "/assets/github-mark.png",
       variant: "light",
     },

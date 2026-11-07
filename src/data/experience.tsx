@@ -51,7 +51,7 @@ export const experience: ExperienceItem[] = [
       },
       {
         label: "Demo",
-        href: "https://youtu.be/ogFBnBrBaP8",
+        href: "https://youtu.be/MLASpZMiEFk",
         icon: "/assets/video.png",
         variant: "dark",
       },
