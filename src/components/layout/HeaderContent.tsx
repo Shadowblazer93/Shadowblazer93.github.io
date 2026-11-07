@@ -5,10 +5,7 @@ import { InlineList } from "../common/InlineList";
 import { NavLink } from "../common/NavLink";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 
-/**
- * The inner content of the site header. Rendered twice on purpose: once inside
- * the sticky <header> and once inside the floating header overlay.
- */
+/** The inner content of the single sticky site header. */
 export function HeaderContent() {
   return (
     <>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 /**
  * Tracks whether the page has been scrolled past `threshold` pixels.
- * Used by the floating header (30px) and the back-to-top button (200px).
+ * Used by the back-to-top button (200px).
  */
 export function useScrolledPast(threshold: number): boolean {
   const [scrolledPast, setScrolledPast] = useState(

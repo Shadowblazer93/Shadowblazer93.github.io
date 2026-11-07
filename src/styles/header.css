@@ -1,16 +1,42 @@
-/* Site header: the sticky header, its floating clone, and the theme switcher. */
+/* Site header: one sticky bar that unfurls to the viewport edges on scroll,
+   plus the theme switcher. */
 
 header {
-    background-color: var(--surface);
+    /* Driven by useHeaderExpansion: 0 = floating at container width,
+       1 = pinned edge-to-edge. The bleeds are the distances from the header's
+       container box to the viewport edges. */
+    --header-progress: 0;
+    --header-bleed-left: 0px;
+    --header-bleed-right: 0px;
+
     color: var(--text-nav);
-    border-radius: 10px;
-    border-bottom: var(--border) 5px solid;
     padding-top: 10px;
-    padding-bottom: 5px;
+    /* The visible border is drawn by ::before, so reserve its 5px here too. */
+    padding-bottom: 10px;
     top: 0px;
     left: 0px;
     position: sticky;
     z-index: 1000;
+}
+
+/* The background lives on its own layer so it can bleed outwards to the
+   viewport edges while the header box - and therefore its content - stays at
+   the container width. */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--header-bleed-left) * var(--header-progress) * -1);
+    right: calc(var(--header-bleed-right) * var(--header-progress) * -1);
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--surface);
+    border-bottom: var(--border) 5px solid;
+    border-radius: calc(10px - (10px * var(--header-progress)));
+    box-shadow: 0 calc(2px + (6px * var(--header-progress)))
+        calc(8px + (16px * var(--header-progress)))
+        rgba(0, 0, 0, calc(0.08 + (0.1 * var(--header-progress))));
 }
 
 .header-avatar {
@@ -29,39 +55,6 @@ header {
     @media (min-width: 450px) {
         display: initial;
     }
-}
-
-/* Floating header -------------------------------------------------- */
-
-#floating-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background: var(--surface);
-    border-bottom: var(--border) 5px solid;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    z-index: 999;
-    opacity: 0;
-    transition: all 100ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
-}
-
-#floating-header.visible {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-}
-
-#floating-header > .container {
-    width: 100%;
-}
-
-#floating-header-inner {
-    margin: 0;
-    border-bottom: none;
 }
 
 /* Navigation shortcuts --------------------------------------------- */

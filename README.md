@@ -25,12 +25,12 @@ public/
 src/
   components/
     common/               # Anchor, NavLink (in-page smooth-scroll link)
-    layout/               # HeaderContent, StickyHeader, FloatingHeader, Footer
+    layout/               # HeaderContent, StickyHeader, Footer
     sections/             # About, Experience, Cca, Projects, Contact
     theme/                # ThemeSwitcher
     ui/                   # cards, links, stats widgets, back-to-top
   data/                   # all page content (site, nav, socials, projects, ...)
-  hooks/                  # useScrolledPast
+  hooks/                  # useHeaderExpansion, useScrolledPast
   styles/                 # CSS split by concern, imported via styles/index.css
   theme/                  # ThemeProvider, context and useTheme hook
   utils/                  # cn(), scroll helpers
