@@ -17,6 +17,7 @@ export function ExperienceCard({
   return (
     <article
       className={`experience-card${tone ? ` experience-card--${tone}` : ""}`}
+      data-reveal
     >
       <div className="exp-title-row">
         <h1 className="card-title">{role}</h1>

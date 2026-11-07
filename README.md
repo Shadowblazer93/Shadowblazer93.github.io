@@ -2,8 +2,9 @@
 
 Personal portfolio site, built with **React + TypeScript + Vite**. It was ported
 from a single `index.html` + `style/style.css` page while keeping the original
-look and behaviour (three-state theme switcher, floating header, smooth-scroll
-navigation, stats widgets, Formspree contact form, back-to-top button).
+look and behaviour (three-state theme switcher, expanding sticky header,
+smooth-scroll navigation, stats widgets, Formspree contact form, back-to-top
+button).
 
 ## Getting started
 
@@ -28,9 +29,9 @@ src/
     layout/               # HeaderContent, StickyHeader, Footer
     sections/             # About, Experience, Cca, Projects, Contact
     theme/                # ThemeSwitcher
-    ui/                   # cards, links, stats widgets, back-to-top
+    ui/                   # cards, links, stats, doodles, section headings
   data/                   # all page content (site, nav, socials, projects, ...)
-  hooks/                  # useHeaderExpansion, useScrolledPast
+  hooks/                  # useHeaderExpansion, useScrolledPast, useScrollReveal
   styles/                 # CSS split by concern, imported via styles/index.css
   theme/                  # ThemeProvider, context and useTheme hook
   utils/                  # cn(), scroll helpers
@@ -45,7 +46,8 @@ src/
 - **Theme logic**: `src/theme/`. The pre-paint script that avoids a theme flash
   stays inline in `index.html`.
 - **Styling**: `src/styles/`, split into tokens, base, header, about,
-  experience, projects and contact. `index.css` controls the cascade order.
+  experience, projects, contact and doodles. `index.css` controls the cascade
+  order.
 - **Colour**: `tokens.css` aliases the [Catppuccin](https://catppuccin.com)
   palette (`@catppuccin/palette`, imported in `index.css`). Dark mode uses
   **Macchiato**, light mode uses **Latte**, and blue is the accent. Change a

@@ -14,7 +14,9 @@ export function BackToTop() {
       onClick={scrollToTop}
       aria-label="Back to top"
     >
-      ↑
+      <span className="back-to-top-arrow" aria-hidden="true">
+        ↑
+      </span>
     </button>
   );
 }

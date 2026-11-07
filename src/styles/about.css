@@ -11,7 +11,7 @@
 }
 
 .about-divider {
-    border: 1px solid var(--input-border);
+    border: 1px solid var(--border);
     margin: 20px;
 }
 
@@ -37,6 +37,7 @@
 
 .about-card:hover {
     background-color: var(--surface-hover);
+    transform: translate(-50%, -50%) translateY(-2px);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
 }
 

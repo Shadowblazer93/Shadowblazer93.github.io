@@ -40,12 +40,18 @@ header::before {
 }
 
 .header-avatar {
+    display: inline-block;
     height: 40px;
     width: 40px;
     vertical-align: middle;
     padding-right: 3px;
     border-radius: 15px;
     padding-bottom: 5px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+h1:hover .header-avatar {
+    transform: scale(1.1);
 }
 
 .header-title {
@@ -91,6 +97,9 @@ a.header-shortcut {
 a.header-shortcut:hover {
     background-color: var(--nav-hover);
     box-shadow: 0 2px 8px rgba(38, 39, 44, 0.08);
+    text-decoration: underline wavy var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
     transition:
         background 0.2s,
         box-shadow 0.2s;
@@ -205,13 +214,15 @@ a.header-link--resume {
     transition:
         background 0.2s,
         box-shadow 0.2s,
-        color 0.2s;
+        color 0.2s,
+        transform 0.2s ease;
 }
 
 .theme-toggle:hover {
     background-color: var(--nav-hover);
     color: var(--accent);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+    transform: translateY(-2px);
 }
 
 .theme-toggle:focus-visible {

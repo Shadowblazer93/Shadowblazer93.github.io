@@ -6,11 +6,12 @@ import {
 } from "../../data/projects";
 import { FeaturedProject } from "../ui/FeaturedProject";
 import { ProjectCard } from "../ui/ProjectCard";
+import { SectionHeading } from "../ui/SectionHeading";
 
 export function ProjectsSection() {
   return (
-    <section>
-      <h2 className="section-title--center">Projects</h2>
+    <section className="section--decorated">
+      <SectionHeading tone="blue">Projects</SectionHeading>
 
       <FeaturedProject project={featuredProject} />
 

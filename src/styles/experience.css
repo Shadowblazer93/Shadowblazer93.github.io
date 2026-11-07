@@ -25,6 +25,8 @@
     background-color: var(--card-hover);
     transform: translateY(-3px);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+    outline: 2px dashed rgba(35, 36, 42, 0.4);
+    outline-offset: 4px;
 }
 
 .experience-card--green {
@@ -55,6 +57,8 @@
     background-color: var(--card-hover);
     transform: translateY(-3px);
     box-shadow: 0 4px 16px rgba(36, 41, 47, 0.12);
+    outline: 2px dashed rgba(35, 36, 42, 0.4);
+    outline-offset: 4px;
 }
 
 .cca-card--teal {
@@ -93,6 +97,11 @@
     vertical-align: auto;
     box-shadow: none;
     background: none;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.experience-card:hover .exp-logo {
+    transform: translateY(15px) scale(1.05);
 }
 
 .card-title {

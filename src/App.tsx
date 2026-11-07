@@ -7,9 +7,12 @@ import { ContactSection } from "./components/sections/ContactSection";
 import { ExperienceSection } from "./components/sections/ExperienceSection";
 import { ProjectsSection } from "./components/sections/ProjectsSection";
 import { BackToTop } from "./components/ui/BackToTop";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import { ThemeProvider } from "./theme";
 
 function Portfolio() {
+  useScrollReveal();
+
   return (
     <>
       {/* The About link targets the top of the page, matching the original site. */}

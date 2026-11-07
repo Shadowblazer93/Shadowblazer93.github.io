@@ -1,18 +1,27 @@
 import { certifications } from "../../data/certifications";
+import { FleurDeLis, Squiggle } from "../ui/Doodles";
 import { GithubStats } from "../ui/GithubStats";
 import { LeetCodeStats } from "../ui/LeetCodeStats";
 
 export function AboutSection() {
   return (
     <section>
-      <h2 className="heading-inline">About </h2>
-      <h2 className="breathing-gradient">Me</h2>
+      <div className="about-hero" data-reveal>
+        <div className="about-heading-wrap">
+          <h2 className="about-heading">
+            About <span className="about-heading-accent">Me</span>
+          </h2>
+          <Squiggle className="about-squiggle" tone="green" />
+          <FleurDeLis className="about-fleur" tone="yellow" />
+        </div>
+      </div>
+
       <p>
         Year 3 Student at NTU, Singapore
         <br />
         Computer Science : <b>Honours (Highest Distinction)</b>
       </p>
-      <ul className="about-bullets">
+      <ul className="about-bullets" data-reveal>
         <li>
           <a
             className="credential"
@@ -28,7 +37,7 @@ export function AboutSection() {
       <br />
 
       <div className="about-columns">
-        <div className="about-left">
+        <div className="about-left" data-reveal>
           <p className="about-subheading">
             Certifications
             <br />

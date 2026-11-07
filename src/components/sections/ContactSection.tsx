@@ -1,14 +1,25 @@
 import { site } from "../../data/site";
+import { Scroll } from "../ui/Doodles";
+import { SectionHeading } from "../ui/SectionHeading";
 
 export function ContactSection() {
   return (
     <section className="contact-section">
-      <h2 className="section-title--center contact-heading">Contact Me</h2>
+      <SectionHeading
+        doodle="envelope"
+        tone="yellow"
+        className="contact-heading"
+      >
+        Contact Me
+      </SectionHeading>
+
+      <Scroll className="contact-scroll" tone="yellow" />
 
       <form
         className="contact-form"
         action="https://formspree.io/f/movwkqvq"
         method="POST"
+        data-reveal
       >
         <input
           className="contact-input"
@@ -32,11 +43,12 @@ export function ContactSection() {
           required
         />
         <button type="submit" className="contact-send">
-          Send
+          <span>Send</span>
+          <i className="fa fa-paper-plane contact-send-plane" aria-hidden="true" />
         </button>
       </form>
 
-      <p className="contact-direct">
+      <p className="contact-direct" data-reveal>
         Or email me directly at <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
     </section>

@@ -16,7 +16,10 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
   } = project;
 
   return (
-    <article className={cn("project-card", compact && "project-card--compact")}>
+    <article
+      className={cn("project-card", compact && "project-card--compact")}
+      data-reveal
+    >
       <h1 className="project-title">{title}</h1>
       <p className="project-tech">{tech}</p>
 
