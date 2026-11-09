@@ -1,18 +1,17 @@
 import { certifications } from "../../data/certifications";
-import { FleurDeLis, Squiggle } from "../ui/Doodles";
+import { Underline } from "../ui/Underline";
 import { GithubStats } from "../ui/GithubStats";
 import { LeetCodeStats } from "../ui/LeetCodeStats";
 
 export function AboutSection() {
   return (
     <section>
-      <div className="about-hero" data-reveal>
+      <div className="about-hero">
         <div className="about-heading-wrap">
           <h2 className="about-heading">
             About <span className="about-heading-accent">Me</span>
           </h2>
-          <Squiggle className="about-squiggle" tone="green" />
-          <FleurDeLis className="about-fleur" tone="yellow" />
+          <Underline className="about-underline" tone="green" />
         </div>
       </div>
 

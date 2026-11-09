@@ -10,8 +10,8 @@ import { SectionHeading } from "../ui/SectionHeading";
 
 export function ProjectsSection() {
   return (
-    <section className="section--decorated">
-      <SectionHeading tone="blue">Projects</SectionHeading>
+    <section>
+      <SectionHeading>Projects</SectionHeading>
 
       <FeaturedProject project={featuredProject} />
 

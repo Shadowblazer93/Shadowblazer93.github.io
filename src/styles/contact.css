@@ -143,7 +143,7 @@ textarea.contact-input {
     inset: -7px;
     border: 2px dashed var(--divider);
     border-radius: 50%;
-    animation: doodle-spin 14s linear infinite;
+    animation: slow-spin 14s linear infinite;
     pointer-events: none;
 }
 

@@ -1,19 +1,10 @@
 import { site } from "../../data/site";
-import { Scroll } from "../ui/Doodles";
 import { SectionHeading } from "../ui/SectionHeading";
 
 export function ContactSection() {
   return (
     <section className="contact-section">
-      <SectionHeading
-        doodle="envelope"
-        tone="yellow"
-        className="contact-heading"
-      >
-        Contact Me
-      </SectionHeading>
-
-      <Scroll className="contact-scroll" tone="yellow" />
+      <SectionHeading className="contact-heading">Contact Me</SectionHeading>
 
       <form
         className="contact-form"

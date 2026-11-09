@@ -29,7 +29,7 @@ src/
     layout/               # HeaderContent, StickyHeader, Footer
     sections/             # About, Experience, Cca, Projects, Contact
     theme/                # ThemeSwitcher
-    ui/                   # cards, links, stats, doodles, section headings
+    ui/                   # cards, links, stats, underlines, section headings
   data/                   # all page content (site, nav, socials, projects, ...)
   hooks/                  # useHeaderExpansion, useScrolledPast, useScrollReveal
   styles/                 # CSS split by concern, imported via styles/index.css
@@ -46,7 +46,7 @@ src/
 - **Theme logic**: `src/theme/`. The pre-paint script that avoids a theme flash
   stays inline in `index.html`.
 - **Styling**: `src/styles/`, split into tokens, base, header, about,
-  experience, projects, contact and doodles. `index.css` controls the cascade
+  experience, projects, contact and underlines. `index.css` controls the cascade
   order.
 - **Colour**: `tokens.css` aliases the [Catppuccin](https://catppuccin.com)
   palette (`@catppuccin/palette`, imported in `index.css`). Dark mode uses

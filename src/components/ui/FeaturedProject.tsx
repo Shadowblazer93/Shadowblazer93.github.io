@@ -1,6 +1,5 @@
 import type { FeaturedProjectItem } from "../../data/types";
 import { InlineList } from "../common/InlineList";
-import { Sparkle } from "./Doodles";
 import { ProjectLink } from "./ProjectLink";
 
 /** The wide, two-column SIERRA card at the top of the Projects section. */
@@ -10,7 +9,6 @@ export function FeaturedProject({ project }: { project: FeaturedProjectItem }) {
 
   return (
     <div className="project-card project-card--featured" data-reveal>
-      <Sparkle className="featured-sparkle" tone="yellow" />
       <h1 className="featured-title-inline">{title}</h1>{" "}
       <p className="project-tech--featured">{tech}</p>{" "}
       <InlineList

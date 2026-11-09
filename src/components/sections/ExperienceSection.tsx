@@ -1,14 +1,11 @@
 import { experience } from "../../data/experience";
-import { Sparkle } from "../ui/Doodles";
 import { ExperienceCard } from "../ui/ExperienceCard";
 import { SectionHeading } from "../ui/SectionHeading";
 
 export function ExperienceSection() {
   return (
-    <section className="full-bleed bg-section section--decorated">
-      <SectionHeading tone="yellow">Experience</SectionHeading>
-
-      <Sparkle className="section-doodle section-doodle--right" tone="pink" />
+    <section className="full-bleed bg-section">
+      <SectionHeading>Experience</SectionHeading>
 
       <div className="experience-grid">
         {experience.map((item) => (
