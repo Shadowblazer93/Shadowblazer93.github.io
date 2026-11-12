@@ -48,6 +48,10 @@ h2 {
     font-size: 3em;
     font-weight: 600;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+    @media (max-width: 480px) {
+        font-size: 2.2em;
+    }
 }
 
 p {

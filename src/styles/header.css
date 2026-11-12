@@ -10,6 +10,8 @@ header {
     --header-bleed-right: 0px;
 
     color: var(--text-nav);
+    display: flex;
+    align-items: center;
     padding-top: 10px;
     /* The visible border is drawn by ::before, so reserve its 5px here too. */
     padding-bottom: 10px;
@@ -17,6 +19,13 @@ header {
     left: 0px;
     position: sticky;
     z-index: 1000;
+}
+
+header h1 {
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
 }
 
 /* The background lives on its own layer so it can bleed outwards to the
@@ -55,29 +64,23 @@ h1:hover .header-avatar {
 }
 
 .header-title {
-    @media (max-width: 450px) {
+    /* The name is the first thing to give up space as the header narrows. */
+    display: initial;
+}
+
+@media (max-width: 1040px) {
+    .header-title {
         display: none;
-    }
-    @media (min-width: 450px) {
-        display: initial;
     }
 }
 
 /* Navigation shortcuts --------------------------------------------- */
 
 .header-shortcuts {
-    @media (min-width: 600px) {
-        display: initial;
-    }
-
-    @media (max-width: 600px) {
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        padding-left: 20px;
-        align-items: center;
-        gap: 10px;
-    }
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 4px;
 }
 
 a.header-shortcut {
@@ -91,6 +94,7 @@ a.header-shortcut {
     border-radius: 10px;
     font-size: 1.1em;
     font-weight: 500;
+    white-space: nowrap;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
@@ -108,27 +112,20 @@ a.header-shortcut:hover {
 /* Outbound links --------------------------------------------------- */
 
 .header-links {
-    @media (min-width: 1150px) {
-        /* Float to the right edge of the header so the buttons leave no dead
-           space on the right, without making the header a flex container. */
-        float: right;
-        padding-right: 20px;
-    }
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 7px;
+    margin-left: auto;
+    padding-right: 20px;
+}
 
-    @media (max-width: 1150px) {
-        float: none;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        padding-top: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        align-items: center;
-        font-size: small;
-        font-weight: 900;
-        gap: 10px;
-    }
+/* In flex the margins that spaced the inline header no longer apply; the
+   gap above spaces the buttons instead. */
+.header-links a.header-link,
+.header-links .theme-switcher,
+.header-links .theme-toggle {
+    margin: 0;
 }
 
 /* Outbound buttons mirror the project / demo pill buttons (.project-link):
@@ -147,6 +144,7 @@ a.header-link {
     border-radius: 10px;
     font-weight: 700;
     font-size: 1.1em;
+    white-space: nowrap;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
     transition:
         background 0.3s,
@@ -171,17 +169,180 @@ a.header-link:focus-visible {
 /* Element-qualified so they outrank the `a.header-link` base rule. */
 a.header-link--github {
     background-color: #0e1012;
-    margin-right: 7px;
 }
 
 a.header-link--linkedin {
     background-color: #0a66c2;
-    margin-right: 7px;
 }
 
 a.header-link--resume {
     background-color: #229b65;
-    margin-right: 0px;
+}
+
+/* Below this width the labels are dropped and the outbound links become
+   circular icon buttons. */
+@media (max-width: 880px) {
+    .header-links a.header-link {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .header-links a.header-link img {
+        height: 22px;
+    }
+
+    .header-link-label {
+        display: none;
+    }
+}
+
+/* Hamburger menu for the section shortcuts ------------------------- */
+
+.header-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    margin-left: 7px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-nav);
+    font-size: 1.25em;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.header-menu-toggle:hover {
+    background-color: var(--nav-hover);
+    color: var(--accent);
+}
+
+.header-menu-toggle:focus-visible {
+    outline: var(--accent) 3px solid;
+    outline-offset: 2px;
+}
+
+.header-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 90;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 190px;
+    padding: 6px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.header-menu-link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--text-body);
+    text-decoration: none;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.05em;
+    white-space: nowrap;
+}
+
+.header-menu-link:hover,
+.header-menu-link:focus-visible {
+    background-color: var(--nav-hover);
+    color: var(--text-strong);
+}
+
+.header-menu-link:focus-visible {
+    outline: var(--accent) 3px solid;
+    outline-offset: 2px;
+}
+
+/* Once even the icons and shortcuts no longer fit, the shortcuts collapse
+   into the hamburger menu. */
+@media (max-width: 680px) {
+    .header-shortcuts {
+        display: none;
+    }
+
+    .header-menu-toggle {
+        display: inline-flex;
+    }
+
+    .header-menu.is-open {
+        display: flex;
+    }
+}
+
+/* Narrow phones: tighten the margins so the full row still fits. */
+@media (max-width: 400px) {
+    header h1 {
+        margin-left: 10px;
+        margin-right: 4px;
+    }
+
+    .header-links {
+        gap: 5px;
+        padding-right: 10px;
+    }
+
+    .header-menu-toggle {
+        margin-left: 4px;
+    }
+}
+
+/* Extremely narrow screens (folded foldables, watch-sized windows): shrink
+   every header control rather than let the row spill over. */
+@media (max-width: 300px) {
+    header h1 {
+        margin-left: 6px;
+        margin-right: 2px;
+    }
+
+    .header-avatar {
+        width: 30px;
+        height: 30px;
+        padding-bottom: 3px;
+    }
+
+    .header-links {
+        gap: 3px;
+        padding-right: 6px;
+    }
+
+    .header-links a.header-link {
+        width: 32px;
+        height: 32px;
+    }
+
+    .header-links a.header-link img {
+        height: 18px;
+    }
+
+    .theme-toggle {
+        width: 28px;
+        height: 28px;
+        font-size: 1em;
+    }
+
+    .header-menu-toggle {
+        width: 32px;
+        height: 32px;
+        margin-left: 3px;
+        font-size: 1.05em;
+    }
 }
 
 /* Theme switcher --------------------------------------------------- */

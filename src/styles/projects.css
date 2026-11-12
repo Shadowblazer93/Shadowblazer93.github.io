@@ -26,6 +26,7 @@
     border-radius: 15px;
     padding: 10px;
     padding-bottom: 20px;
+    min-width: 0;
     box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
     margin-bottom: 20px;
     transition:
@@ -84,18 +85,21 @@
 
     @media (max-width: 1000px) {
         display: block;
-        max-width: 330px;
+        max-width: min(330px, 100%);
+        margin-left: 0;
     }
 }
 
 /* Links ------------------------------------------------------------ */
 
 .project-link {
+    display: inline-block;
     text-decoration: none;
     color: var(--on-accent);
     margin-left: 10px;
     font-weight: 700;
     font-size: 1.1em;
+    white-space: nowrap;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
     border-radius: 10px;
     background-color: var(--accent);
@@ -112,11 +116,13 @@
 }
 
 .project-link-dark {
+    display: inline-block;
     text-decoration: none;
     color: #393939;
     margin-left: 10px;
     font-weight: 700;
     font-size: 1.1em;
+    white-space: nowrap;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
     border-radius: 10px;
     background-color: #23242a;
@@ -151,6 +157,12 @@
     margin-left: 210px;
 }
 
+/* Only used to break the featured card's links onto their own row while the
+   card is stacked; on wide screens the first link stays inline with the title. */
+.featured-links-break {
+    display: none;
+}
+
 /* Featured (SIERRA) card ------------------------------------------- */
 
 .featured-layout {
@@ -162,15 +174,20 @@
 }
 
 .featured-media {
-    flex: 1 1 1;
-    min-width: 260px;
+    flex: 1 1 52%;
+    min-width: 0;
+    /* Keep the video aligned with the indented title/copy instead of hanging
+       out to the card's padding edge. */
+    box-sizing: border-box;
+    padding-left: 20px;
 }
 
 .featured-video {
-    max-width: calc(100% - 20px);
+    display: block;
+    width: 100%;
+    max-width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
-    padding-left: 20px;
     border-radius: 10px;
 }
 
@@ -182,7 +199,37 @@
 }
 
 .featured-text {
-    flex: 1;
+    flex: 1 1 40%;
+    min-width: 0;
+}
+
+/* Stack the card before the text column gets too narrow to read, so the copy
+   flows underneath the video instead of squeezing beside it. */
+@media (max-width: 1100px) {
+    .featured-links-break {
+        display: block;
+    }
+
+    .featured-layout {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .featured-media,
+    .featured-text {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .featured-divider {
+        width: 100%;
+        height: 5px;
+        align-self: auto;
+    }
+
+    .project-link--lead {
+        margin-left: 10px;
+    }
 }
 
 .featured-title-inline {
@@ -208,4 +255,39 @@
 
 .featured-description {
     font-size: large;
+}
+
+/* On phones the labelled pills can be wider than the card. Shrink the entire
+   button - text, padding, icons and spacing - fluidly with the viewport so the
+   row stays on one line instead of wrapping to a second line. Kept last so it
+   also wins over the featured card's stacked-left margin above. */
+@media (max-width: 560px) {
+    .project-link,
+    .project-link-dark {
+        font-size: clamp(9.5px, calc(4.2vw - 2px), 16px);
+        padding: 0.28em 0.34em;
+        margin-left: 0.4em;
+        line-height: 1.35;
+    }
+
+    .project-link--indent,
+    .project-link-dark--indent {
+        margin-left: 0.7em;
+    }
+
+    .project-link--lead {
+        margin-left: 0.7em;
+    }
+
+    .project-link .link-icon,
+    .project-link-dark .link-icon {
+        height: 1.14em;
+        padding-right: 0.15em;
+        padding-bottom: 0.2em;
+    }
+
+    .project-link .external-icon,
+    .project-link-dark .external-icon {
+        font-size: 0.9em;
+    }
 }

@@ -11,6 +11,7 @@ export function FeaturedProject({ project }: { project: FeaturedProjectItem }) {
     <div className="project-card project-card--featured" data-reveal>
       <h1 className="featured-title-inline">{title}</h1>{" "}
       <p className="project-tech--featured">{tech}</p>{" "}
+      <br className="featured-links-break" />
       <InlineList
         items={links.map((link, index) => (
           <ProjectLink key={link.label} {...link} lead={index === 0} />

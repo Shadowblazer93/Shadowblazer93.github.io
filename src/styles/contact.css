@@ -102,6 +102,15 @@ textarea.contact-input {
 
 .contact-direct a {
     color: var(--accent-green);
+    /* The address is one long token: allow it to break rather than push the
+       section past the viewport on very narrow screens. */
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+    .contact-section {
+        padding: 24px 20px;
+    }
 }
 
 /* Back to top ------------------------------------------------------ */

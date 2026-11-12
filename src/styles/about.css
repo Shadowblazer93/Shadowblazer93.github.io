@@ -8,6 +8,9 @@
 .about-left {
     max-width: 600px;
     flex: 1 1 300px;
+    /* Allow the column to shrink below its content's min-content width on very
+       narrow screens instead of overflowing the section. */
+    min-width: 0;
 }
 
 .about-card {
@@ -109,17 +112,23 @@ a.about-social:focus-visible {
     object-fit: contain;
 }
 
-/* Keep the three-across row inside narrow phones. */
+/* Keep the two-row triangle on narrow phones by letting the buttons share
+   the row width evenly instead of holding their 120px desktop size. */
 @media (max-width: 450px) {
+    .about-social-collage {
+        margin: 20px 10px;
+    }
+
     a.about-social {
-        width: 102px;
-        gap: 4px;
+        flex: 0 0 calc((100% - 16px) / 3);
+        width: auto;
+        gap: 3px;
         padding: 0 5px;
-        font-size: 0.7em;
+        font-size: clamp(9px, 2.7vw, 11px);
     }
 
     .about-social-icon {
-        height: 14px;
+        height: clamp(11px, 3.6vw, 14px);
     }
 }
 

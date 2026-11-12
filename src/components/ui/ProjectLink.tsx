@@ -26,7 +26,13 @@ export function ProjectLink({
   );
 
   return (
-    <a className={className} href={href} target="_blank" rel="noreferrer">
+    <a
+      className={className}
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+    >
       <img className="link-icon" src={icon} alt="" />{" "}
       <span>{label}</span>{" "}
       <i className="fa fa-external-link external-icon" aria-hidden="true" />{" "}

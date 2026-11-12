@@ -104,6 +104,28 @@
     transform: translateY(15px) scale(1.05);
 }
 
+/* On narrow cards the logo must shrink and sit above/below instead of forcing
+   the name and logo into one overflowing row. */
+@media (max-width: 640px) {
+    .exp-title-row {
+        flex-wrap: wrap;
+        gap: 4px 8px;
+    }
+
+    .exp-title-row .exp-logo {
+        height: auto;
+        max-height: 48px;
+        max-width: 42%;
+        margin-left: auto;
+        margin-right: 10px;
+        transform: none;
+    }
+
+    .experience-card:hover .exp-logo {
+        transform: scale(1.05);
+    }
+}
+
 .card-title {
     padding-top: 5px;
     color: #23242a;
