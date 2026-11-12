@@ -1,4 +1,4 @@
-/* About section: certifications column and the stats card. */
+/* About section: profile links column and the stats card. */
 
 .about-columns {
     display: flex;
@@ -50,6 +50,122 @@
 .about-card-link {
     text-decoration: none;
     color: inherit;
+}
+
+/* Profile buttons: two left-aligned rows of brand-coloured pills mirroring
+   the header buttons, but sized to the About column instead of the header bar. */
+
+.about-social-collage {
+    /* The stats card floats over the right of this column, so the collage
+       stays narrow enough to clear it. */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 380px;
+    margin: 20px;
+}
+
+.about-social-row {
+    display: flex;
+    gap: 8px;
+}
+
+a.about-social {
+    --social-bg: var(--surface);
+    --social-ink: white;
+    --social-glow: rgba(36, 41, 47, 0.16);
+
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 120px;
+    height: 38px;
+    padding: 0 7px;
+    border-radius: 10px;
+    background-color: var(--social-bg);
+    color: var(--social-ink);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.82em;
+    white-space: nowrap;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(36, 41, 47, 0.08);
+    transition:
+        box-shadow 0.2s,
+        transform 0.2s;
+}
+
+a.about-social:hover {
+    box-shadow: 0 6px 18px var(--social-glow);
+    transform: translateY(-3px);
+}
+
+a.about-social:focus-visible {
+    outline: var(--accent) 3px solid;
+    outline-offset: 2px;
+}
+
+.about-social-icon {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Keep the three-across row inside narrow phones. */
+@media (max-width: 450px) {
+    a.about-social {
+        width: 102px;
+        gap: 4px;
+        padding: 0 5px;
+        font-size: 0.7em;
+    }
+
+    .about-social-icon {
+        height: 14px;
+    }
+}
+
+/* Element-qualified so they outrank the base `a.about-social` rule. */
+a.about-social--linkedin {
+    --social-bg: #0a66c2;
+    --social-glow: rgba(10, 102, 194, 0.45);
+}
+
+a.about-social--github {
+    --social-bg: #0e1012;
+    --social-glow: rgba(88, 197, 255, 0.4);
+}
+
+/* GitHub's near-black pill disappears against the dark page background, so
+   lift it to the neutral grey surface there. */
+[data-theme="dark"] a.about-social--github {
+    --social-bg: var(--btn-neutral);
+}
+
+a.about-social--leetcode {
+    --social-bg: #ffa116;
+    --social-ink: #1f2328;
+    --social-glow: rgba(255, 161, 22, 0.5);
+}
+
+/* The LeetCode mark's orange half would disappear into the orange button, so
+   flatten it to a single dark mark like the other bright buttons. */
+a.about-social--leetcode .about-social-icon {
+    filter: brightness(0);
+}
+
+a.about-social--monkeytype {
+    --social-bg: #e2b714;
+    --social-ink: #1f2328;
+    --social-glow: rgba(226, 183, 20, 0.5);
+}
+
+a.about-social--artstation {
+    --social-bg: #13aff0;
+    --social-ink: #06121a;
+    --social-glow: rgba(19, 175, 240, 0.5);
 }
 
 /* GitHub / LeetCode stat widgets ----------------------------------- */

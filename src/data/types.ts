@@ -18,6 +18,15 @@ export interface SocialLink {
   variant: "github" | "linkedin" | "resume";
 }
 
+/** An outbound profile button shown in the About section. */
+export interface ProfileLink {
+  label: string;
+  href: string;
+  /** Path to the icon served from public/assets. */
+  icon: string;
+  variant: "github" | "linkedin" | "leetcode" | "monkeytype" | "artstation";
+}
+
 export interface NavItem {
   label: string;
   href: string;

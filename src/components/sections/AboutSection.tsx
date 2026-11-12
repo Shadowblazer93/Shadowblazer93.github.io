@@ -1,4 +1,6 @@
-import { certifications } from "../../data/certifications";
+// Certifications are paused while the About column shows socials instead.
+// import { certifications } from "../../data/certifications";
+import { profileRows } from "../../data/profiles";
 import { Underline } from "../ui/Underline";
 import { GithubStats } from "../ui/GithubStats";
 import { LeetCodeStats } from "../ui/LeetCodeStats";
@@ -37,6 +39,7 @@ export function AboutSection() {
 
       <div className="about-columns">
         <div className="about-left" data-reveal>
+          {/* Certifications are paused while this column shows socials.
           <p className="about-subheading">
             Certifications
             <br />
@@ -58,6 +61,33 @@ export function AboutSection() {
               </a>
             </p>
           ))}
+          */}
+          <p className="about-subheading">
+            Socials &amp; Profiles
+            <br />
+          </p>
+          <div className="about-social-collage">
+            {profileRows.map((row) => (
+              <div key={row[0].label} className="about-social-row">
+                {row.map((profile) => (
+                  <a
+                    key={profile.label}
+                    className={`about-social about-social--${profile.variant}`}
+                    href={profile.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className="about-social-icon"
+                      src={profile.icon}
+                      alt=""
+                    />{" "}
+                    {profile.label}
+                  </a>
+                ))}
+              </div>
+            ))}
+          </div>
           <hr className="about-divider" />
         </div>
 
