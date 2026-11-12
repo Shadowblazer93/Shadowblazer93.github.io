@@ -10,11 +10,6 @@
     flex: 1 1 300px;
 }
 
-.about-divider {
-    border: 1px solid var(--border);
-    margin: 20px;
-}
-
 .about-card {
     @media (max-width: 1100px) {
         display: none;
@@ -83,6 +78,7 @@ a.about-social {
     width: 120px;
     height: 38px;
     padding: 0 7px;
+    border: 1px solid var(--border);
     border-radius: 10px;
     background-color: var(--social-bg);
     color: var(--social-ink);
@@ -138,34 +134,26 @@ a.about-social--github {
     --social-glow: rgba(88, 197, 255, 0.4);
 }
 
-/* GitHub's near-black pill disappears against the dark page background, so
-   lift it to the neutral grey surface there. */
-[data-theme="dark"] a.about-social--github {
-    --social-bg: var(--btn-neutral);
-}
-
 a.about-social--leetcode {
-    --social-bg: #ffa116;
-    --social-ink: #1f2328;
-    --social-glow: rgba(255, 161, 22, 0.5);
+    --social-bg: #c2410c;
+    --social-glow: rgba(194, 65, 12, 0.55);
 }
 
-/* The LeetCode mark's orange half would disappear into the orange button, so
-   flatten it to a single dark mark like the other bright buttons. */
-a.about-social--leetcode .about-social-icon {
-    filter: brightness(0);
+/* The brand marks are black, so invert them to white to match their labels. */
+a.about-social--leetcode .about-social-icon,
+a.about-social--monkeytype .about-social-icon,
+a.about-social--artstation .about-social-icon {
+    filter: brightness(0) invert(1);
 }
 
 a.about-social--monkeytype {
-    --social-bg: #e2b714;
-    --social-ink: #1f2328;
-    --social-glow: rgba(226, 183, 20, 0.5);
+    --social-bg: #a16207;
+    --social-glow: rgba(161, 98, 7, 0.55);
 }
 
 a.about-social--artstation {
-    --social-bg: #13aff0;
-    --social-ink: #06121a;
-    --social-glow: rgba(19, 175, 240, 0.5);
+    --social-bg: #0369a1;
+    --social-glow: rgba(3, 105, 161, 0.55);
 }
 
 /* GitHub / LeetCode stat widgets ----------------------------------- */

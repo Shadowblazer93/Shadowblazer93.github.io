@@ -162,13 +162,12 @@
     border: 2px solid var(--border);
     border-radius: 4px;
     background-color: var(--surface-alt);
-    transform: rotate(-4deg);
     transition: transform 0.2s ease;
     pointer-events: none;
 }
 
 .project-card:hover::before {
-    transform: rotate(-4deg) translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .project-grid > .project-card::before {
@@ -184,7 +183,7 @@
 }
 
 .project-card--featured::before {
-    background-color: var(--experience-card-bg);
+    background-color: var(--ctp-macchiato-blue);
 }
 
 /* Reduced motion ---------------------------------------------------- */

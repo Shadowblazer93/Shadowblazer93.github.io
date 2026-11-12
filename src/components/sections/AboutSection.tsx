@@ -88,7 +88,6 @@ export function AboutSection() {
               </div>
             ))}
           </div>
-          <hr className="about-divider" />
         </div>
 
         <div className="about-card">
